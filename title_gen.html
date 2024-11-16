@@ -1,0 +1,885 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>&lt;no title&gt; &#8212; Undergraduate Research on Stock Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'title_gen';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="cover.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/ursd.png" class="logo__image only-light" alt="Undergraduate Research on Stock Data - Home"/>
+    <script>document.write(`<img src="_static/ursd.png" class="logo__image only-dark" alt="Undergraduate Research on Stock Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="cover.html">
+                    Cover
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="acknowledge.html">Acknowledgments</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/title_gen.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cover&#39;</span><span class="p">,</span> <span class="s1">&#39;in plain terms&#39;</span><span class="p">,</span> <span class="s1">&#39;acknowledgments&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;colaboratory&#39;</span><span class="p">,</span> <span class="s1">&#39;text cell&#39;</span><span class="p">,</span> <span class="s1">&#39;text cell questions&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;code cell&#39;</span><span class="p">,</span> <span class="s1">&#39;code cell questions&#39;</span><span class="p">,</span> <span class="s1">&#39;colab exercises&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;variables&#39;</span><span class="p">,</span> <span class="s1">&#39;variables debugging&#39;</span><span class="p">,</span> <span class="s1">&#39;variables output&#39;</span><span class="p">,</span> <span class="s1">&#39;variables code&#39;</span><span class="p">,</span> <span class="s1">&#39;variables exercises&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;input and output&#39;</span><span class="p">,</span> <span class="s1">&#39;io debugging&#39;</span><span class="p">,</span> <span class="s1">&#39;io output&#39;</span><span class="p">,</span> <span class="s1">&#39;io code&#39;</span><span class="p">,</span> <span class="s1">&#39;io exercises&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;numbers&#39;</span><span class="p">,</span> <span class="s1">&#39;numbers debugging&#39;</span><span class="p">,</span> <span class="s1">&#39;numbers output&#39;</span><span class="p">,</span> <span class="s1">&#39;numbers code&#39;</span><span class="p">,</span> <span class="s1">&#39;numbers exercises&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;strings&#39;</span><span class="p">,</span> <span class="s1">&#39;strings debugging&#39;</span><span class="p">,</span> <span class="s1">&#39;strings output&#39;</span><span class="p">,</span> <span class="s1">&#39;strings code&#39;</span><span class="p">,</span> <span class="s1">&#39;strings exercises&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;conditionals&#39;</span><span class="p">,</span> <span class="s1">&#39;conditionals debugging&#39;</span><span class="p">,</span> <span class="s1">&#39;conditionals output&#39;</span><span class="p">,</span> <span class="s1">&#39;conditionals code&#39;</span><span class="p">,</span> <span class="s1">&#39;conditionals exercises&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;iterations&#39;</span><span class="p">,</span> <span class="s1">&#39;iterations debugging&#39;</span><span class="p">,</span> <span class="s1">&#39;iterations output&#39;</span><span class="p">,</span> <span class="s1">&#39;iterations code&#39;</span><span class="p">,</span> <span class="s1">&#39;iterations exercises&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;tuples&#39;</span><span class="p">,</span> <span class="s1">&#39;tuples debugging&#39;</span><span class="p">,</span> <span class="s1">&#39;tuples output&#39;</span><span class="p">,</span> <span class="s1">&#39;tuples code&#39;</span><span class="p">,</span> <span class="s1">&#39;tuples exercises&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;lists&#39;</span><span class="p">,</span> <span class="s1">&#39;lists debugging&#39;</span><span class="p">,</span> <span class="s1">&#39;lists output&#39;</span><span class="p">,</span> <span class="s1">&#39;lists code&#39;</span><span class="p">,</span> <span class="s1">&#39;lists exercises&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;functions&#39;</span><span class="p">,</span> <span class="s1">&#39;functions debugging&#39;</span><span class="p">,</span> <span class="s1">&#39;functions output&#39;</span><span class="p">,</span> <span class="s1">&#39;functions code&#39;</span><span class="p">,</span> <span class="s1">&#39;functions exercises&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;sets&#39;</span><span class="p">,</span> <span class="s1">&#39;sets debugging&#39;</span><span class="p">,</span> <span class="s1">&#39;sets output&#39;</span><span class="p">,</span> <span class="s1">&#39;sets code&#39;</span><span class="p">,</span> <span class="s1">&#39;sets exercises&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;dictionaries&#39;</span><span class="p">,</span> <span class="s1">&#39;dictionaries debugging&#39;</span><span class="p">,</span> <span class="s1">&#39;dictionaries output&#39;</span><span class="p">,</span> <span class="s1">&#39;dictionaries code&#39;</span><span class="p">,</span> <span class="s1">&#39;dictionaries exercises&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;numpy arrays&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;projects&#39;</span><span class="p">,</span> <span class="s1">&#39;factorization&#39;</span><span class="p">,</span> <span class="s1">&#39;election&#39;</span><span class="p">,</span> <span class="s1">&#39;soccer&#39;</span><span class="p">,</span> <span class="s1">&#39;smoothing&#39;</span><span class="p">,</span> <span class="s1">&#39;approximating areas&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;appendix&#39;</span><span class="p">,</span> <span class="s1">&#39;business glossary&#39;</span><span class="p">,</span> <span class="s1">&#39;visualization&#39;</span><span class="p">,</span> <span class="s1">&#39;math&#39;</span><span class="p">,</span> <span class="s1">&#39;statistics&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="s1">&#39;seaborn&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_set</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">title_list</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">title</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">title</span><span class="p">)):</span>
+        
+        <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span> <span class="n">j</span> <span class="o">=</span> <span class="n">title</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span> <span class="n">j</span> <span class="o">=</span> <span class="n">title</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            
+        <span class="n">color_rand</span> <span class="o">=</span> <span class="n">color_set</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">color_set</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="n">size_rand</span>  <span class="o">=</span>  <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">85</span><span class="p">)</span>
+        <span class="n">rotation_rand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">,{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="n">color_rand</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="n">size_rand</span><span class="p">,</span> <span class="s1">&#39;rotation&#39;</span><span class="p">:</span><span class="n">rotation_rand</span><span class="p">})</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;title_pict/&#39;</span><span class="o">+</span><span class="n">title</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/nk/5wgxqqvs5cl4rdg3h_61lzpw0000gn/T/ipykernel_15810/2359950526.py:5: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  plt.figure(figsize=(12,2))
+</pre></div>
+</div>
+<img alt="_images/36bca0cfcf45013f2229ee7da6edc71f07bcd0be67ec8dd2c1ff01869fba7538.png" src="_images/36bca0cfcf45013f2229ee7da6edc71f07bcd0be67ec8dd2c1ff01869fba7538.png" />
+<img alt="_images/bcd696010e0339d866849a61e8c640357d3b0a781aa883aee997c6c318124066.png" src="_images/bcd696010e0339d866849a61e8c640357d3b0a781aa883aee997c6c318124066.png" />
+<img alt="_images/1737d95182edfdfa5bf1e680cf69de452a8be9b01fa776c106eab9d57acffa6b.png" src="_images/1737d95182edfdfa5bf1e680cf69de452a8be9b01fa776c106eab9d57acffa6b.png" />
+<img alt="_images/210f4e33b046db677d3140848ed6c962ba668ea23dd44c4ff264eded01fb2df8.png" src="_images/210f4e33b046db677d3140848ed6c962ba668ea23dd44c4ff264eded01fb2df8.png" />
+<img alt="_images/9405272a906b98498abf02ad38efc6c2e034ebc6f03d08196a7dcc99dc08b35e.png" src="_images/9405272a906b98498abf02ad38efc6c2e034ebc6f03d08196a7dcc99dc08b35e.png" />
+<img alt="_images/ca2ef1376ad5326cd579dd734c36c89f38f8de3c9909c9279ea0992f2f465731.png" src="_images/ca2ef1376ad5326cd579dd734c36c89f38f8de3c9909c9279ea0992f2f465731.png" />
+<img alt="_images/c3c518124dd55a48b258a541e4dd4fe814ab60a95542d6879c2743ad4400f71b.png" src="_images/c3c518124dd55a48b258a541e4dd4fe814ab60a95542d6879c2743ad4400f71b.png" />
+<img alt="_images/ee77575018ccebb11faa86b212d29160d1ca7a1ac6197cbc301326dacdc9bdd5.png" src="_images/ee77575018ccebb11faa86b212d29160d1ca7a1ac6197cbc301326dacdc9bdd5.png" />
+<img alt="_images/7e6fd553ab81c47463312f616479b7c059edc35e86694482a79976c7dc4b75a2.png" src="_images/7e6fd553ab81c47463312f616479b7c059edc35e86694482a79976c7dc4b75a2.png" />
+<img alt="_images/2903deb5ba283ec06f4af2a9ebf11cca32ebe2d30fb4fcc1850683d98572e7ab.png" src="_images/2903deb5ba283ec06f4af2a9ebf11cca32ebe2d30fb4fcc1850683d98572e7ab.png" />
+<img alt="_images/6a381fd7914f7e71d4e04b384e89db14a97de47c2918273474d4493d1f7328fe.png" src="_images/6a381fd7914f7e71d4e04b384e89db14a97de47c2918273474d4493d1f7328fe.png" />
+<img alt="_images/ed4442f4f6d6ea38769e396a408cddef0bc77a12f9e49d0ca1a2bb4fee45a131.png" src="_images/ed4442f4f6d6ea38769e396a408cddef0bc77a12f9e49d0ca1a2bb4fee45a131.png" />
+<img alt="_images/0a0b077f3b09a583de28a111c1392f8d1a767c4228e52c8a75a74a1a8572843b.png" src="_images/0a0b077f3b09a583de28a111c1392f8d1a767c4228e52c8a75a74a1a8572843b.png" />
+<img alt="_images/d0482bca2cbc8193396315c27413d94e58b94737b7b9a81b0d9a6e2a71bc8152.png" src="_images/d0482bca2cbc8193396315c27413d94e58b94737b7b9a81b0d9a6e2a71bc8152.png" />
+<img alt="_images/ccc21a138e8953c8e3b229f1370a46533fad594b23e312c4455f6586a117b9e5.png" src="_images/ccc21a138e8953c8e3b229f1370a46533fad594b23e312c4455f6586a117b9e5.png" />
+<img alt="_images/2bf068019ca7c5f39985d1ed37fcbeef0d3f330759addfe5a275f5c338502fb8.png" src="_images/2bf068019ca7c5f39985d1ed37fcbeef0d3f330759addfe5a275f5c338502fb8.png" />
+<img alt="_images/fa241fde819d49afa20f6c9474b175e82d8c139e3856cc25ebb494b733d87b04.png" src="_images/fa241fde819d49afa20f6c9474b175e82d8c139e3856cc25ebb494b733d87b04.png" />
+<img alt="_images/c06bdec9baedd9a57122617939300abfae9c840d34ba37588a9867a9fa448791.png" src="_images/c06bdec9baedd9a57122617939300abfae9c840d34ba37588a9867a9fa448791.png" />
+<img alt="_images/3692963effc475513f78479ddfb84e706aa996f79803a5efeece76e68f309cbc.png" src="_images/3692963effc475513f78479ddfb84e706aa996f79803a5efeece76e68f309cbc.png" />
+<img alt="_images/ef8bc789f12ee9e8222cb9ca8b742891f4bff04507efcff3d8517bdca2793fb5.png" src="_images/ef8bc789f12ee9e8222cb9ca8b742891f4bff04507efcff3d8517bdca2793fb5.png" />
+<img alt="_images/cf2080a4b5e0832783a91cee84fee7a99b7f3a00e382c993021de4cadce61996.png" src="_images/cf2080a4b5e0832783a91cee84fee7a99b7f3a00e382c993021de4cadce61996.png" />
+<img alt="_images/f4259fe4d847b44d3f415ea8f77dbbbd51f9ce316c282e547ae9e31872f6633d.png" src="_images/f4259fe4d847b44d3f415ea8f77dbbbd51f9ce316c282e547ae9e31872f6633d.png" />
+<img alt="_images/4928ff1eba792b6ce453f9e1587ea17d1aa01c550f48cc672b5cb9899efe4ce6.png" src="_images/4928ff1eba792b6ce453f9e1587ea17d1aa01c550f48cc672b5cb9899efe4ce6.png" />
+<img alt="_images/53e7e479e55f1b774e1e70e17d13decffa3086efb96bdae4e126a8ba70dcf17e.png" src="_images/53e7e479e55f1b774e1e70e17d13decffa3086efb96bdae4e126a8ba70dcf17e.png" />
+<img alt="_images/f5b82a29a7ae45f163bdc827590aa54a859f70d497f6c341043d7aaa3362416a.png" src="_images/f5b82a29a7ae45f163bdc827590aa54a859f70d497f6c341043d7aaa3362416a.png" />
+<img alt="_images/49ba4a420aee9c29e4e6840b010226c63acb4430bd9f8f74c093e2bebce098a8.png" src="_images/49ba4a420aee9c29e4e6840b010226c63acb4430bd9f8f74c093e2bebce098a8.png" />
+<img alt="_images/78051fa410a3a162da1a080f0fb0ffde54f4de2401b2fd789e34906732c62222.png" src="_images/78051fa410a3a162da1a080f0fb0ffde54f4de2401b2fd789e34906732c62222.png" />
+<img alt="_images/8642ceb9eb439ea1f38119298a7881bcdeeb5a13fcc53e6209b92c4b3e7a49ac.png" src="_images/8642ceb9eb439ea1f38119298a7881bcdeeb5a13fcc53e6209b92c4b3e7a49ac.png" />
+<img alt="_images/b4dfde60c7df1454bda1456e5213b894b497ee3bce1ab0d121f0caf0beefefa9.png" src="_images/b4dfde60c7df1454bda1456e5213b894b497ee3bce1ab0d121f0caf0beefefa9.png" />
+<img alt="_images/3b3550f7a21db9fea1c1d9b8d7e4167628062a8adc0852419f9425636e5d89ee.png" src="_images/3b3550f7a21db9fea1c1d9b8d7e4167628062a8adc0852419f9425636e5d89ee.png" />
+<img alt="_images/91556f2fd8e45a3ef41b63e8b70cb7dd826d1e06b93ca1940070c8765fc98526.png" src="_images/91556f2fd8e45a3ef41b63e8b70cb7dd826d1e06b93ca1940070c8765fc98526.png" />
+<img alt="_images/70965c977f6ea6b8c896e19c5526fa89bcd4c294fc6ee66f91758fe8f76ec6e4.png" src="_images/70965c977f6ea6b8c896e19c5526fa89bcd4c294fc6ee66f91758fe8f76ec6e4.png" />
+<img alt="_images/019836b85a614603443e824a61b2cc113ae1def4ab6f4a5770c61b054d15604b.png" src="_images/019836b85a614603443e824a61b2cc113ae1def4ab6f4a5770c61b054d15604b.png" />
+<img alt="_images/37b9f2d6a792405c98e35a0b882ccfd66bdf02df0e4716a408319e6055adacca.png" src="_images/37b9f2d6a792405c98e35a0b882ccfd66bdf02df0e4716a408319e6055adacca.png" />
+<img alt="_images/da6d93e6d4d01a234bfbf00293bb3334a5d7d467cfd75c87500ad22e5f99176a.png" src="_images/da6d93e6d4d01a234bfbf00293bb3334a5d7d467cfd75c87500ad22e5f99176a.png" />
+<img alt="_images/d5006b3ea677d34a9158c7cabd98b39dbbb7ca867125446798772ab948d6b6eb.png" src="_images/d5006b3ea677d34a9158c7cabd98b39dbbb7ca867125446798772ab948d6b6eb.png" />
+<img alt="_images/3782d0f665a0b8e0ca7a5fe9861ff8eb6d24d113bec0cb3014bda91dfc5b5fa9.png" src="_images/3782d0f665a0b8e0ca7a5fe9861ff8eb6d24d113bec0cb3014bda91dfc5b5fa9.png" />
+<img alt="_images/56244d30481f3335de3de6791eda70d0f0cb17803776215270cb2b95e22586f8.png" src="_images/56244d30481f3335de3de6791eda70d0f0cb17803776215270cb2b95e22586f8.png" />
+<img alt="_images/244d213ab9d9ef52584102dd9efcf966157d2f046bc531eb99317ba564c6b904.png" src="_images/244d213ab9d9ef52584102dd9efcf966157d2f046bc531eb99317ba564c6b904.png" />
+<img alt="_images/019d30d9ea0c454038881158fb2575dd841e2e10168e34b03c3ec4b0dda1e5a8.png" src="_images/019d30d9ea0c454038881158fb2575dd841e2e10168e34b03c3ec4b0dda1e5a8.png" />
+<img alt="_images/3955984bdd2bc56b14e2d1793bfcd6bcc6f6e175c542cc3f83f41fd2376eb06d.png" src="_images/3955984bdd2bc56b14e2d1793bfcd6bcc6f6e175c542cc3f83f41fd2376eb06d.png" />
+<img alt="_images/dd04de7da3df90d48a36ac575f3d31a0a53819fec8be9dfaef69fa18c0f41b9c.png" src="_images/dd04de7da3df90d48a36ac575f3d31a0a53819fec8be9dfaef69fa18c0f41b9c.png" />
+<img alt="_images/183ee48211acf9629b889549e0f8b2b1d329951ae7614e2a841359b395e54790.png" src="_images/183ee48211acf9629b889549e0f8b2b1d329951ae7614e2a841359b395e54790.png" />
+<img alt="_images/a42c3f85bfed3dd8ead3099855a5ee2af90e8cae929f6cc2395baf761b30478e.png" src="_images/a42c3f85bfed3dd8ead3099855a5ee2af90e8cae929f6cc2395baf761b30478e.png" />
+<img alt="_images/4f29b907596fd3f93b3d6f0e42d37679740efbf5f74f6f67ffc1b2865efbd65c.png" src="_images/4f29b907596fd3f93b3d6f0e42d37679740efbf5f74f6f67ffc1b2865efbd65c.png" />
+<img alt="_images/b1950640916e0daf4f64660c12c28b84c9baadb87646c09873cd0f4a7ec6d9ba.png" src="_images/b1950640916e0daf4f64660c12c28b84c9baadb87646c09873cd0f4a7ec6d9ba.png" />
+<img alt="_images/3dff17832d018663a3615cc6bcfb2cd9ae8bee12976375ad5136cac77df364bb.png" src="_images/3dff17832d018663a3615cc6bcfb2cd9ae8bee12976375ad5136cac77df364bb.png" />
+<img alt="_images/c588a2368fefeb2fd1040094206c2634454b3534a4c77ff95ff14a5ac99845fe.png" src="_images/c588a2368fefeb2fd1040094206c2634454b3534a4c77ff95ff14a5ac99845fe.png" />
+<img alt="_images/10dd0659684f17448e1af46c821e03d299b93f6e342a4b42deaac24e0f43f8a8.png" src="_images/10dd0659684f17448e1af46c821e03d299b93f6e342a4b42deaac24e0f43f8a8.png" />
+<img alt="_images/b6f173b02e2442e118a3506f8f38af92a49ff2492664672ddac1ffc13ea4de54.png" src="_images/b6f173b02e2442e118a3506f8f38af92a49ff2492664672ddac1ffc13ea4de54.png" />
+<img alt="_images/f7a39ecb49a6f0972d89628a5e6a6f1868ce7347cf69584df5fda60def893bd2.png" src="_images/f7a39ecb49a6f0972d89628a5e6a6f1868ce7347cf69584df5fda60def893bd2.png" />
+<img alt="_images/a5e38ba670be0152162801c6b7d30117f15ef210f02e45c947df18369fc8984b.png" src="_images/a5e38ba670be0152162801c6b7d30117f15ef210f02e45c947df18369fc8984b.png" />
+<img alt="_images/ce659fb3f4b070fcfdd5aaf12aaa2bc81e6614b04d8bfd497269259530256c5a.png" src="_images/ce659fb3f4b070fcfdd5aaf12aaa2bc81e6614b04d8bfd497269259530256c5a.png" />
+<img alt="_images/c4a9d1b3ff54167dfa09b7c499aa2e435c26d7f5e3f769ca55d2a494fc2d4ba6.png" src="_images/c4a9d1b3ff54167dfa09b7c499aa2e435c26d7f5e3f769ca55d2a494fc2d4ba6.png" />
+<img alt="_images/02d7b4933535e4b89a97506e1a434843bd75266da1abff78252a9722068f8e38.png" src="_images/02d7b4933535e4b89a97506e1a434843bd75266da1abff78252a9722068f8e38.png" />
+<img alt="_images/5550bf26db1e22177cdee9782c5191d99d4592bbf9e623ea8d3aef7dd3bd5631.png" src="_images/5550bf26db1e22177cdee9782c5191d99d4592bbf9e623ea8d3aef7dd3bd5631.png" />
+<img alt="_images/d87741ee04cfb5fef94dbb9f1ed7df1ea7022c9f994544b801e088f692206f13.png" src="_images/d87741ee04cfb5fef94dbb9f1ed7df1ea7022c9f994544b801e088f692206f13.png" />
+<img alt="_images/038d0ab723988fe8118743d5f64a8e42e121d6b3456fff928de7064b95106692.png" src="_images/038d0ab723988fe8118743d5f64a8e42e121d6b3456fff928de7064b95106692.png" />
+<img alt="_images/842daabbda1281167609b6d15b15626461f3faca168c0789e4587199f47ed899.png" src="_images/842daabbda1281167609b6d15b15626461f3faca168c0789e4587199f47ed899.png" />
+<img alt="_images/af269cdf8747f8a5c0a7d23877f600e3b8b92228a3a7f73e9f78fbca1cb9a5fe.png" src="_images/af269cdf8747f8a5c0a7d23877f600e3b8b92228a3a7f73e9f78fbca1cb9a5fe.png" />
+<img alt="_images/0237c7d806e3b5ddff268581cf6ac9a2f7403ea1c982ca8dbe5d93d82c7edbd7.png" src="_images/0237c7d806e3b5ddff268581cf6ac9a2f7403ea1c982ca8dbe5d93d82c7edbd7.png" />
+<img alt="_images/959bc53b676f8d9b722ba7b48d4d281340eb27f332e6367c0719fba4c20e8f09.png" src="_images/959bc53b676f8d9b722ba7b48d4d281340eb27f332e6367c0719fba4c20e8f09.png" />
+<img alt="_images/c21c83db8be5eaaf78d9fc539b8e70a6c74bf1073802f095955ae4a09c71b880.png" src="_images/c21c83db8be5eaaf78d9fc539b8e70a6c74bf1073802f095955ae4a09c71b880.png" />
+<img alt="_images/b18fef2157cbc3b3c91b2eaa95acca41f91d795251d7436b743a84e0fb979fc7.png" src="_images/b18fef2157cbc3b3c91b2eaa95acca41f91d795251d7436b743a84e0fb979fc7.png" />
+<img alt="_images/9d77233a5691f80987fab329488f961c059edd8ad2282db6daf7460fa72ac8ee.png" src="_images/9d77233a5691f80987fab329488f961c059edd8ad2282db6daf7460fa72ac8ee.png" />
+<img alt="_images/1b2ac2a08803ed304e9729eb8356066ed5028fc9ea048c1e3551b8f5e27ab5a1.png" src="_images/1b2ac2a08803ed304e9729eb8356066ed5028fc9ea048c1e3551b8f5e27ab5a1.png" />
+<img alt="_images/c430fe3623b98c4db320c0e8a09612aa804c86de8bcb47a018a22998efa063ba.png" src="_images/c430fe3623b98c4db320c0e8a09612aa804c86de8bcb47a018a22998efa063ba.png" />
+<img alt="_images/7462ff285ceb5290228c96f8c151cf520f5d0c9ffff8d5eb749e737bbe4151e8.png" src="_images/7462ff285ceb5290228c96f8c151cf520f5d0c9ffff8d5eb749e737bbe4151e8.png" />
+<img alt="_images/871ae5538a0def3cff86a53f1362696f0bff1b1b48de7bc94bcaf5cbbd719082.png" src="_images/871ae5538a0def3cff86a53f1362696f0bff1b1b48de7bc94bcaf5cbbd719082.png" />
+<img alt="_images/0cc043a73556c9bdcbcbd314823069ec16733a6f82a3b76239b4dd7516278e58.png" src="_images/0cc043a73556c9bdcbcbd314823069ec16733a6f82a3b76239b4dd7516278e58.png" />
+<img alt="_images/edd3f5696aa828196b5509c37e120af99549a5bcfff7a0cc9ada6db419b91afb.png" src="_images/edd3f5696aa828196b5509c37e120af99549a5bcfff7a0cc9ada6db419b91afb.png" />
+<img alt="_images/e853e7c753b66e77d3e72e65c342fe634cc93d2a123e1e75cd84ac06d2ba10f4.png" src="_images/e853e7c753b66e77d3e72e65c342fe634cc93d2a123e1e75cd84ac06d2ba10f4.png" />
+<img alt="_images/06cafa4b11869101667cfc7457a8c2cbb652126d7ba04cf933f7b3c45917966d.png" src="_images/06cafa4b11869101667cfc7457a8c2cbb652126d7ba04cf933f7b3c45917966d.png" />
+<img alt="_images/be9cb448cc2b5c67269dc15111eaebc55880aa46349fbf42a5902c1a6024ee75.png" src="_images/be9cb448cc2b5c67269dc15111eaebc55880aa46349fbf42a5902c1a6024ee75.png" />
+<img alt="_images/5aa1d6a95d02c09fc5873bc01520e8fb9e82e142378bad0bdc10f07b148a6de3.png" src="_images/5aa1d6a95d02c09fc5873bc01520e8fb9e82e142378bad0bdc10f07b148a6de3.png" />
+<img alt="_images/e60d10180cb8631d7378f75778c0f8834d29b137e814a69fd45b0a8c3ba00825.png" src="_images/e60d10180cb8631d7378f75778c0f8834d29b137e814a69fd45b0a8c3ba00825.png" />
+<img alt="_images/728605024e433bb6a553f2d888305d443e67124f2a428497a3f33a724128ead6.png" src="_images/728605024e433bb6a553f2d888305d443e67124f2a428497a3f33a724128ead6.png" />
+<img alt="_images/4a332e838b0b793afc7524ed8ea0151ebeaba8ae8286b0cc9ec58f4fbb1f87da.png" src="_images/4a332e838b0b793afc7524ed8ea0151ebeaba8ae8286b0cc9ec58f4fbb1f87da.png" />
+<img alt="_images/7be1cef0d9b498b08136997cbc5fd9eee0307128e5c7e8463136419d8143d9db.png" src="_images/7be1cef0d9b498b08136997cbc5fd9eee0307128e5c7e8463136419d8143d9db.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">]</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;chartreuse&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">8.7</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;chartreuse&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">3.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">7.2</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="s1">&#39;In Plain Terms&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Yusuf Danisman&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/60edfeb7e0e8acb9474009e8d2bc3afbc8b52437f1213d22f6c035243c442fa4.png" src="_images/60edfeb7e0e8acb9474009e8d2bc3afbc8b52437f1213d22f6c035243c442fa4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span><span class="s1">&#39;pink&#39;</span><span class="p">]</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">3.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">7.2</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="s1">&#39;In Plain Terms&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Yusuf Danisman&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span><span class="s1">&#39;pink&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>         <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 500x500 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;aqua&#39;</span><span class="p">,</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;salmon&#39;</span><span class="p">,</span> <span class="s1">&#39;violet&#39;</span><span class="p">]</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(),</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">800</span><span class="p">),</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">3.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">7.2</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="s1">&#39;In Plain Terms&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Yusuf Danisman&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;aqua&#39;</span><span class="p">,</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;salmon&#39;</span><span class="p">,</span> <span class="s1">&#39;violet&#39;</span><span class="p">]</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(),</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">800</span><span class="p">),</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">3.2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">7.2</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="s1">&#39;In Plain Terms&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Yusuf Danisman&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(),</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">300</span><span class="p">),</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="s1">&#39;In Plain Terms&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Yusuf Danisman&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">],[</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">8.5</span><span class="p">,</span><span class="mf">8.5</span><span class="p">],[</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">8.5</span><span class="p">],[</span><span class="mf">6.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">8.5</span><span class="p">],[</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="o">%</span><span class="k">len</span>(colors)], alpha=1,linewidth=2)
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="s1">&#39;In Plain Terms&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Yusuf Danisman&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">],[</span><span class="mf">5.2</span><span class="p">,</span><span class="mf">5.2</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;snow&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">],[</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">8.5</span><span class="p">,</span><span class="mf">8.5</span><span class="p">],[</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">8.5</span><span class="p">],[</span><span class="mf">6.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">8.5</span><span class="p">],[</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="mi">8</span><span class="o">&lt;</span><span class="n">i</span><span class="o">&lt;</span><span class="mf">9.5</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="mi">82</span><span class="o">&lt;</span><span class="n">i</span><span class="o">&lt;</span><span class="mf">2.8</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="o">%</span><span class="k">len</span>(colors)], alpha=1,linewidth=1)
+    
+    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="mf">2.5</span><span class="o">&lt;</span><span class="n">i</span><span class="o">&lt;</span><span class="mf">9.5</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="o">%</span><span class="k">len</span>(colors)], alpha=1,linewidth=1)
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">8.1</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="s1">&#39;In Plain Terms&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="s1">&#39;Yusuf Danisman&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># plt.plot([0,11],[5.2,5.2], linewidth=1000, c=&#39;snow&#39;, alpha=1)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">],[</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">8.5</span><span class="p">,</span><span class="mf">8.5</span><span class="p">],[</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">8.5</span><span class="p">],[</span><span class="mf">6.5</span><span class="p">,</span><span class="mf">6.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">8.5</span><span class="p">],[</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="o">%</span><span class="k">len</span>(colors)],alpha=1)
+    
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">8.1</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="s1">&#39;In Plain Terms&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="s1">&#39;Yusuf Danisman&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i</span><span class="o">/</span><span class="n">N</span><span class="o">*</span><span class="mi">11</span><span class="p">,</span><span class="n">i</span><span class="o">/</span><span class="n">N</span><span class="o">*</span><span class="mi">11</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="n">i</span><span class="o">/</span><span class="n">N</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">8.1</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="s1">&#39;In Plain Terms&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="s1">&#39;Yusuf Danisman&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;fantasy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">color_set</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">x</span><span class="o">=</span><span class="mi">2</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;PYTHON&#39;</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">color_set</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">color_set</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">8</span> <span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;times new roman&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="mf">1.2</span>
+
+<span class="n">x</span><span class="o">=</span><span class="mf">4.5</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;in&#39;</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">r</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">color_set</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">color_set</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">7</span> <span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;times new roman&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">+=</span><span class="mf">0.4</span>
+
+<span class="n">x</span><span class="o">=</span><span class="mi">3</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;plain terms&#39;</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">r</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">color_set</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">color_set</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">6</span> <span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;times new roman&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">+=</span><span class="mf">0.4</span>
+
+
+<span class="n">x</span><span class="o">=</span><span class="mf">2.5</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;YUSUF DANISMAN&#39;</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">r</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">color_set</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">color_set</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span> <span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;times new roman&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">+=</span><span class="mf">0.5</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;aqua&#39;</span><span class="p">,</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;salmon&#39;</span><span class="p">,</span> <span class="s1">&#39;violet&#39;</span><span class="p">,</span> <span class="s1">&#39;silver&#39;</span><span class="p">,</span> <span class="s1">&#39;plum&#39;</span><span class="p">]</span>
+<span class="c1">#colors = [&#39;r&#39;, &#39;k&#39;, &#39;g&#39;, &#39;navy&#39;, &#39;orange&#39;, &#39;b&#39;, &#39;purple&#39;]</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="o">=</span><span class="mf">2.8</span><span class="p">,</span> <span class="mi">8</span>
+<span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="o">=</span><span class="mf">6.2</span><span class="p">,</span> <span class="mf">7.5</span>
+<span class="n">x3</span><span class="p">,</span><span class="n">y3</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">2</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">70</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span>  <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="n">x1</span><span class="o">&lt;</span><span class="n">x</span><span class="o">&lt;</span><span class="n">x1</span><span class="o">+</span><span class="mf">5.5</span> <span class="ow">and</span> <span class="n">y1</span><span class="o">&lt;</span><span class="n">y</span><span class="o">&lt;</span><span class="n">y1</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">x2</span><span class="o">&lt;</span><span class="n">x</span><span class="o">&lt;</span><span class="n">x2</span><span class="o">+</span><span class="mi">3</span> <span class="ow">and</span> <span class="n">y2</span><span class="o">&lt;</span><span class="n">y</span><span class="o">&lt;</span><span class="n">y2</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">x3</span><span class="o">&lt;</span><span class="n">x</span><span class="o">&lt;</span><span class="n">x3</span><span class="o">+</span><span class="mi">6</span> <span class="ow">and</span> <span class="n">y3</span><span class="o">&lt;</span><span class="n">y</span><span class="o">&lt;</span><span class="n">y3</span><span class="o">+</span><span class="mf">0.5</span><span class="p">)):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">800</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s1">&#39;In Plain Terms&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="s1">&#39;Yusuf Danisman&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">color_set</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">]</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">color_set</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">+</span><span class="n">i</span><span class="o">/</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="o">+</span><span class="n">i</span><span class="o">/</span><span class="mi">20</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color_set</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;pict/sep.png&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b153b423c33be9ec91030b9b8ebd75c4847e95a0ee0e419c1ccfd10822e51d23.png" src="_images/b153b423c33be9ec91030b9b8ebd75c4847e95a0ee0e419c1ccfd10822e51d23.png" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yusuf Danisman
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
