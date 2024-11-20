@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Project-1: Candlestick Patterns" href="proj1_candlestick.html" />
-    <link rel="prev" title="Research Paper Structure" href="research_paper_structure.html" />
+    <link rel="prev" title="Research Article Structure" href="research_paper_structure.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="acknowledge.html">Acknowledgments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="research_paper_structure.html">Research Paper Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="research_paper_structure.html">Research Article Structure</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Stock Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="proj1_candlestick.html">Project-1: Candlestick Patterns</a></li>
 </ul>
@@ -406,7 +406,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">()</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -450,52 +450,52 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>2024-10-18 00:00:00-04:00</th>
-      <td>235.920426</td>
-      <td>235.920426</td>
-      <td>233.752812</td>
-      <td>234.741730</td>
-      <td>46431500</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
       <th>2024-10-21 00:00:00-04:00</th>
-      <td>234.192340</td>
-      <td>236.589712</td>
-      <td>234.192340</td>
-      <td>236.220108</td>
+      <td>234.19</td>
+      <td>236.59</td>
+      <td>234.19</td>
+      <td>236.22</td>
       <td>36254500</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2024-10-22 00:00:00-04:00</th>
-      <td>233.632963</td>
-      <td>235.960405</td>
-      <td>232.344388</td>
-      <td>235.600800</td>
+      <td>233.63</td>
+      <td>235.96</td>
+      <td>232.34</td>
+      <td>235.60</td>
       <td>38846600</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2024-10-23 00:00:00-04:00</th>
-      <td>233.822752</td>
-      <td>234.881585</td>
-      <td>227.509690</td>
-      <td>230.506393</td>
+      <td>233.82</td>
+      <td>234.88</td>
+      <td>227.51</td>
+      <td>230.51</td>
       <td>52287000</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2024-10-24 00:00:00-04:00</th>
-      <td>229.727257</td>
-      <td>230.566345</td>
-      <td>228.158990</td>
-      <td>230.316620</td>
+      <td>229.73</td>
+      <td>230.57</td>
+      <td>228.16</td>
+      <td>230.32</td>
       <td>31109500</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2024-10-25 00:00:00-04:00</th>
+      <td>229.49</td>
+      <td>232.96</td>
+      <td>229.32</td>
+      <td>231.16</td>
+      <td>38802300</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -522,7 +522,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -567,50 +567,50 @@ document.write(`
   <tbody>
     <tr>
       <th>1980-12-12 00:00:00-05:00</th>
-      <td>0.098834</td>
-      <td>0.099264</td>
-      <td>0.098834</td>
-      <td>0.098834</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.10</td>
       <td>469033600</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1980-12-15 00:00:00-05:00</th>
-      <td>0.094108</td>
-      <td>0.094108</td>
-      <td>0.093678</td>
-      <td>0.093678</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.09</td>
       <td>175884800</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1980-12-16 00:00:00-05:00</th>
-      <td>0.087232</td>
-      <td>0.087232</td>
-      <td>0.086802</td>
-      <td>0.086802</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.09</td>
       <td>105728000</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1980-12-17 00:00:00-05:00</th>
-      <td>0.088951</td>
-      <td>0.089381</td>
-      <td>0.088951</td>
-      <td>0.088951</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.09</td>
       <td>86441600</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1980-12-18 00:00:00-05:00</th>
-      <td>0.091530</td>
-      <td>0.091959</td>
-      <td>0.091530</td>
-      <td>0.091530</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.09</td>
+      <td>0.09</td>
       <td>73449600</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -625,7 +625,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;1995-1-1&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2000-12-31&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -670,50 +670,50 @@ document.write(`
   <tbody>
     <tr>
       <th>1995-01-03 00:00:00-05:00</th>
-      <td>0.289489</td>
-      <td>0.289489</td>
-      <td>0.282043</td>
-      <td>0.285766</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.28</td>
+      <td>0.29</td>
       <td>103868800</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1995-01-04 00:00:00-05:00</th>
-      <td>0.287627</td>
-      <td>0.295074</td>
-      <td>0.287627</td>
-      <td>0.293213</td>
+      <td>0.29</td>
+      <td>0.30</td>
+      <td>0.29</td>
+      <td>0.29</td>
       <td>158681600</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1995-01-05 00:00:00-05:00</th>
-      <td>0.292281</td>
-      <td>0.293213</td>
-      <td>0.288558</td>
-      <td>0.289489</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.29</td>
       <td>73640000</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1995-01-06 00:00:00-05:00</th>
-      <td>0.309967</td>
-      <td>0.321137</td>
-      <td>0.306244</td>
-      <td>0.312760</td>
+      <td>0.31</td>
+      <td>0.32</td>
+      <td>0.31</td>
+      <td>0.31</td>
       <td>1076622400</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1995-01-09 00:00:00-05:00</th>
-      <td>0.309967</td>
-      <td>0.311829</td>
-      <td>0.305313</td>
-      <td>0.306826</td>
+      <td>0.31</td>
+      <td>0.31</td>
+      <td>0.31</td>
+      <td>0.31</td>
       <td>274086400</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -728,7 +728,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;1995-1-1&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2000-12-31&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -769,42 +769,42 @@ document.write(`
   <tbody>
     <tr>
       <th>1995-01-03 00:00:00-05:00</th>
-      <td>0.289489</td>
-      <td>0.289489</td>
-      <td>0.282043</td>
-      <td>0.285766</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.28</td>
+      <td>0.29</td>
       <td>103868800</td>
     </tr>
     <tr>
       <th>1995-01-04 00:00:00-05:00</th>
-      <td>0.287627</td>
-      <td>0.295074</td>
-      <td>0.287627</td>
-      <td>0.293213</td>
+      <td>0.29</td>
+      <td>0.30</td>
+      <td>0.29</td>
+      <td>0.29</td>
       <td>158681600</td>
     </tr>
     <tr>
       <th>1995-01-05 00:00:00-05:00</th>
-      <td>0.292281</td>
-      <td>0.293213</td>
-      <td>0.288558</td>
-      <td>0.289489</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.29</td>
       <td>73640000</td>
     </tr>
     <tr>
       <th>1995-01-06 00:00:00-05:00</th>
-      <td>0.309967</td>
-      <td>0.321137</td>
-      <td>0.306244</td>
-      <td>0.312760</td>
+      <td>0.31</td>
+      <td>0.32</td>
+      <td>0.31</td>
+      <td>0.31</td>
       <td>1076622400</td>
     </tr>
     <tr>
       <th>1995-01-09 00:00:00-05:00</th>
-      <td>0.309967</td>
-      <td>0.311829</td>
-      <td>0.305313</td>
-      <td>0.306826</td>
+      <td>0.31</td>
+      <td>0.31</td>
+      <td>0.31</td>
+      <td>0.31</td>
       <td>274086400</td>
     </tr>
   </tbody>
@@ -819,7 +819,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reset the index and set the previous index as the Date column.</span>
 <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -854,46 +854,46 @@ document.write(`
     <tr>
       <th>0</th>
       <td>1995-01-03 00:00:00-05:00</td>
-      <td>0.289489</td>
-      <td>0.289489</td>
-      <td>0.282043</td>
-      <td>0.285766</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.28</td>
+      <td>0.29</td>
       <td>103868800</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1995-01-04 00:00:00-05:00</td>
-      <td>0.287627</td>
-      <td>0.295074</td>
-      <td>0.287627</td>
-      <td>0.293213</td>
+      <td>0.29</td>
+      <td>0.30</td>
+      <td>0.29</td>
+      <td>0.29</td>
       <td>158681600</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1995-01-05 00:00:00-05:00</td>
-      <td>0.292281</td>
-      <td>0.293213</td>
-      <td>0.288558</td>
-      <td>0.289489</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.29</td>
       <td>73640000</td>
     </tr>
     <tr>
       <th>3</th>
       <td>1995-01-06 00:00:00-05:00</td>
-      <td>0.309967</td>
-      <td>0.321137</td>
-      <td>0.306244</td>
-      <td>0.312760</td>
+      <td>0.31</td>
+      <td>0.32</td>
+      <td>0.31</td>
+      <td>0.31</td>
       <td>1076622400</td>
     </tr>
     <tr>
       <th>4</th>
       <td>1995-01-09 00:00:00-05:00</td>
-      <td>0.309967</td>
-      <td>0.311829</td>
-      <td>0.305313</td>
-      <td>0.306826</td>
+      <td>0.31</td>
+      <td>0.31</td>
+      <td>0.31</td>
+      <td>0.31</td>
       <td>274086400</td>
     </tr>
   </tbody>
@@ -904,7 +904,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use date() method to access only the date part and assign it as the new values for the &#39;Date&#39; column.</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">]</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -939,46 +939,46 @@ document.write(`
     <tr>
       <th>0</th>
       <td>1995-01-03</td>
-      <td>0.289489</td>
-      <td>0.289489</td>
-      <td>0.282043</td>
-      <td>0.285766</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.28</td>
+      <td>0.29</td>
       <td>103868800</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1995-01-04</td>
-      <td>0.287627</td>
-      <td>0.295074</td>
-      <td>0.287627</td>
-      <td>0.293213</td>
+      <td>0.29</td>
+      <td>0.30</td>
+      <td>0.29</td>
+      <td>0.29</td>
       <td>158681600</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1995-01-05</td>
-      <td>0.292281</td>
-      <td>0.293213</td>
-      <td>0.288558</td>
-      <td>0.289489</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.29</td>
+      <td>0.29</td>
       <td>73640000</td>
     </tr>
     <tr>
       <th>3</th>
       <td>1995-01-06</td>
-      <td>0.309967</td>
-      <td>0.321137</td>
-      <td>0.306244</td>
-      <td>0.312760</td>
+      <td>0.31</td>
+      <td>0.32</td>
+      <td>0.31</td>
+      <td>0.31</td>
       <td>1076622400</td>
     </tr>
     <tr>
       <th>4</th>
       <td>1995-01-09</td>
-      <td>0.309967</td>
-      <td>0.311829</td>
-      <td>0.305313</td>
-      <td>0.306826</td>
+      <td>0.31</td>
+      <td>0.31</td>
+      <td>0.31</td>
+      <td>0.31</td>
       <td>274086400</td>
     </tr>
   </tbody>
@@ -1024,7 +1024,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Research Paper Structure</p>
+        <p class="prev-next-title">Research Article Structure</p>
       </div>
     </a>
     <a class="right-next"

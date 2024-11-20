@@ -170,7 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="acknowledge.html">Acknowledgments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="research_paper_structure.html">Research Paper Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="research_paper_structure.html">Research Article Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_data.html">Stock Data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Project-1: Candlestick Patterns</a></li>
 </ul>
@@ -1501,7 +1501,7 @@ document.write(`
 <li><p>Example: (‘a’, 1), (‘bbc’, -1), (‘dd’, -1) are examples of K-line patterns.</p></li>
 </ul>
 </li>
-<li><p><strong>Pattern Set</strong>: The collection of all K-line patterns within the training data.</p></li>
+<li><p><strong>Pattern Set (PSet)</strong>: The collection of all K-line patterns within the training data.</p></li>
 </ul>
 </section>
 <section id="coding">
@@ -1607,6 +1607,15 @@ document.write(`
 </section>
 <section id="subsequence">
 <h2>Subsequence<a class="headerlink" href="#subsequence" title="Permalink to this heading">#</a></h2>
+<p>A sequence <strong>KTS-1</strong> is a <strong>subsequence</strong> of another sequence <strong>KTS-2</strong> if all the K-lines (letters) in <strong>KTS-1</strong> appear in <strong>KTS-2</strong> in the same order, though they may be separated by other K-lines (letters).</p>
+<p><strong>Examples:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'ab'</span></code> is a subsequence of <code class="docutils literal notranslate"><span class="pre">'dabc'</span></code> (letters <code class="docutils literal notranslate"><span class="pre">'a'</span></code> and <code class="docutils literal notranslate"><span class="pre">'b'</span></code> appear in order).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'ab'</span></code> is a subsequence of <code class="docutils literal notranslate"><span class="pre">'daebc'</span></code> (letters <code class="docutils literal notranslate"><span class="pre">'a'</span></code> and <code class="docutils literal notranslate"><span class="pre">'b'</span></code> appear in order).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'ab'</span></code> is <strong>NOT</strong> a subsequence of <code class="docutils literal notranslate"><span class="pre">'dbac'</span></code> (letter <code class="docutils literal notranslate"><span class="pre">'b'</span></code> appears before <code class="docutils literal notranslate"><span class="pre">'a'</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'ab'</span></code> is <strong>NOT</strong> a subsequence of <code class="docutils literal notranslate"><span class="pre">'dbeac'</span></code> (letter <code class="docutils literal notranslate"><span class="pre">'b'</span></code> appears before <code class="docutils literal notranslate"><span class="pre">'a'</span></code>).</p></li>
+</ul>
+<p><img alt="" src="_images/subsequence.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">whethersub</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
@@ -1619,6 +1628,54 @@ document.write(`
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="mi">0</span>          
     <span class="k">return</span> <span class="mi">1</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">whethersub</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;dabc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">whethersub</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;dabc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">whethersub</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;dbac&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">whethersub</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;dbeac&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -1662,6 +1719,92 @@ document.write(`
 </section>
 <section id="onum">
 <h2>oNum<a class="headerlink" href="#onum" title="Permalink to this heading">#</a></h2>
+<p>oNum of a <span class="math notranslate nohighlight">\(KTS_i\)</span> in a Pattern Set (PSet) is defined as the number of KTS in the PSet for which <span class="math notranslate nohighlight">\(KTS_i\)</span> is a subsequence including itself (regardless of trend).
+For example consider the following PSet:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>kts</p></th>
+<th class="head text-center"><p>trend</p></th>
+<th class="head text-center"><p>count</p></th>
+<th class="head text-center"><p>oNum</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>a</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-center"><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>a</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>b</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>11</p></td>
+</tr>
+<tr class="row-odd"><td><p>d</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>ae</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>bc</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>7</p></td>
+<td class="text-center"><p>7</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p><strong>oNum for (‘a’,1):</strong></p>
+<ul class="simple">
+<li><p>‘a’ of (‘a’,1) is a subsequence of the KTS ‘a’ of (‘a’,1)(There are 5 of them.)</p></li>
+<li><p>‘a’ of (‘a’,1) is a subsequence of the KTS ‘a’ of (‘a’,-1)(There are 2 of them.)</p></li>
+<li><p>‘a’ of (‘a’,1) is a subsequence of the KTS ‘ae’ of (‘ae’,-1)(There are 3 of them.)</p></li>
+<li><p>oNum: 5 + 2 + 3 = 10.</p></li>
+</ul>
+</li>
+<li><p><strong>oNum for (‘a’,-1):</strong></p>
+<ul class="simple">
+<li><p>‘a’ of (‘a’,-1) is a subsequence of the KTS ‘a’ of (‘a’,1)(There are 5 of them.)</p></li>
+<li><p>‘a’ of (‘a’,-1) is a subsequence of the KTS ‘a’ of (‘a’,-1)(There are 2 of them.)</p></li>
+<li><p>‘a’ of (‘a’,-1) is a subsequence of the KTS ‘ae’ of (‘ae’,-1)(There are 3 of them.)</p></li>
+<li><p>oNum: 5 + 2 + 3 = 10.</p></li>
+</ul>
+</li>
+<li><p><strong>oNum for (‘b’,1):</strong></p>
+<ul class="simple">
+<li><p>‘b’ of (‘b’,1) is a subsequence of the KTS ‘b’ of (‘b’,1)(There are 4 of them.)</p></li>
+<li><p>‘b’ of (‘b’,1) is a subsequence of the KTS ‘bc’ of (‘bc’,1)(There are 7 of them.)</p></li>
+<li><p>oNum: 4 + 7 = 11 .</p></li>
+</ul>
+</li>
+<li><p><strong>oNum for (‘d’,-1):</strong></p>
+<ul class="simple">
+<li><p>‘d’ of (‘d’,-1) is a subsequence of the KTS ‘b’ of (‘b’,1)(There is 1 of them.)</p></li>
+<li><p>oNum: 1.</p></li>
+</ul>
+</li>
+<li><p><strong>oNum for (‘ae’:</strong></p>
+<ul class="simple">
+<li><p>‘ae’ of (‘ae’,-1) is a subsequence of the KTS ‘ae’ of (‘ae’,-1)(There are 3 of them.)</p></li>
+<li><p>oNum: 3.</p></li>
+</ul>
+</li>
+<li><p><strong>oNum for ‘bc’:</strong></p>
+<ul class="simple">
+<li><p>‘bc’ of (‘bc’,1) is a subsequence of the KTS ‘bc’ of (‘bc’,1)(There are 7 of them.)</p></li>
+<li><p>oNum: 7.</p></li>
+</ul>
+</li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">onum</span><span class="p">(</span><span class="n">pset</span><span class="p">):</span>
@@ -1753,6 +1896,103 @@ document.write(`
 </section>
 <section id="sametrendnum">
 <h2>sameTrendNum<a class="headerlink" href="#sametrendnum" title="Permalink to this heading">#</a></h2>
+<p>The sameTrendNum of a <span class="math notranslate nohighlight">\(KTS_i\)</span> in a Pattern Set (PSet) is the number of KTS in the PSet for which:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(KTS_i\)</span>​ is a subsequence (including itself) of KTS.</p></li>
+<li><p>The Trend of the KTS matches the Trend of <span class="math notranslate nohighlight">\(KTS_i\)</span></p></li>
+</ul>
+<p>Let’s keep working on the same following PSet as above:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>kts</p></th>
+<th class="head text-center"><p>trend</p></th>
+<th class="head text-center"><p>count</p></th>
+<th class="head text-center"><p>oNum</p></th>
+<th class="head text-center"><p>sameTrendNum</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>a</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-center"><p>10</p></td>
+<td class="text-center"><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>a</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>10</p></td>
+<td class="text-center"><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>b</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>11</p></td>
+<td class="text-center"><p>11</p></td>
+</tr>
+<tr class="row-odd"><td><p>d</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>ae</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>bc</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>7</p></td>
+<td class="text-center"><p>7</p></td>
+<td class="text-center"><p>7</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p><strong>oNum for (‘a’,1):</strong></p>
+<ul class="simple">
+<li><p>‘a’ of (‘a’,1) is a subsequence of the KTS ‘a’ of (‘a’,1) and Trends are matching. (There are 5 of them.)</p></li>
+<li><p>‘a’ of (‘a’,1) is a subsequence of the KTS ‘a’ of (‘a’,-1) but Trends are not matching.</p></li>
+<li><p>‘a’ of (‘a’,1) is a subsequence of the KTS ‘ae’ of (‘ae’,-1) but Trends are not matching.</p></li>
+<li><p>sameTrenNum: 5.</p></li>
+</ul>
+</li>
+<li><p><strong>oNum for (‘a’,-1):</strong></p>
+<ul class="simple">
+<li><p>‘a’ of (‘a’,-1) is a subsequence of the KTS ‘a’ of (‘a’,1) but Trends are NOT matching.</p></li>
+<li><p>‘a’ of (‘a’,-1) is a subsequence of the KTS ‘a’ of (‘a’,-1) but Trends are not matching. ((There are 2 of them.)</p></li>
+<li><p>‘a’ of (‘a’,-1) is a subsequence of the KTS ‘ae’ of (‘ae’,-1) and Trends are matching. (There are 3 of them.)</p></li>
+<li><p>sameTrenNum: 2+3=5.</p></li>
+</ul>
+</li>
+<li><p><strong>oNum for (‘b’,1):</strong></p>
+<ul class="simple">
+<li><p>‘b’ of (‘b’,1) is a subsequence of the KTS ‘a’ of (‘b’,1) and Trends are matching. (There are 4 of them.)</p></li>
+<li><p>‘b’ of (‘b’,1) is a subsequence of the KTS ‘bc’ of (‘bc’,1) and Trends are matching. (There are 7 of them.)</p></li>
+<li><p>sameTrenNum: 4+7=11.</p></li>
+</ul>
+</li>
+<li><p><strong>oNum for (‘d’,-1):</strong></p>
+<ul class="simple">
+<li><p>‘d’ of (‘d’,-1) is a subsequence of the KTS ‘d’ of (‘d’,-1) and Trends are matching. (There is 1 of them.)</p></li>
+<li><p>sameTrenNum: 1.</p></li>
+</ul>
+</li>
+<li><p><strong>oNum for (‘ae’:</strong></p>
+<ul class="simple">
+<li><p>‘ae’ of (‘ae’,-1) is a subsequence of the KTS ‘ae’ of (‘ae’,-1) and Trends are matching. (There are 3 of them.)</p></li>
+<li><p>sameTrenNum: 3.</p></li>
+</ul>
+</li>
+<li><p><strong>oNum for ‘bc’:</strong></p>
+<ul class="simple">
+<li><p>‘bc’ of (‘bc’,1) is a subsequence of the KTS ‘bc’ of (‘bc’,1) and Trends are matching. (There are 7 of them.)</p></li>
+<li><p>sameTrenNum: 7.</p></li>
+</ul>
+</li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sametrendnum</span><span class="p">(</span><span class="n">pset</span><span class="p">):</span>
@@ -1851,6 +2091,87 @@ document.write(`
 </section>
 <section id="pacc">
 <h2>PACC<a class="headerlink" href="#pacc" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Pattern Accuracy Score</strong> is a metric that evaluates the reliability of a K-line Pattern <span class="math notranslate nohighlight">\((KTS_i, Trend_i)\)</span>.</p>
+<ul class="simple">
+<li><p>It is calculated as the ratio of matching trends among all the K-line patterns for which <span class="math notranslate nohighlight">\(KTS_i\)</span> is a subsequence.
+<strong>Formula:</strong></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\displaystyle PACC_i = \frac{sameTrenNum_i}{oNum_i}\)</span></p>
+<p><strong>Explanation</strong></p>
+<ul class="simple">
+<li><p>For example, if <span class="math notranslate nohighlight">\(PACC_i = 0.30\)</span>, this indicates that <span class="math notranslate nohighlight">\(30\%\)</span> of the patterns where <span class="math notranslate nohighlight">\(KTS_i\)</span> is a subsequence have the same trend <span class="math notranslate nohighlight">\(Trend_i\)</span>.</p>
+<ul>
+<li><p>In other words, the reliability of the pattern <span class="math notranslate nohighlight">\((KTS_i, Trend_i)\)</span> is <span class="math notranslate nohighlight">\(30\%\)</span>, as <span class="math notranslate nohighlight">\(30\%\)</span> of the matching K-line sequences support the same trend.</p></li>
+</ul>
+</li>
+<li><p>The <strong>Pattern Accuracy Score (PACC)</strong> is a value between 0 and 1.</p>
+<ul>
+<li><p>A <strong>higher PACC value</strong> indicates a <strong>more reliable trend</strong> for the corresponding <span class="math notranslate nohighlight">\(KTS_i\)</span>.</p></li>
+<li><p>For example:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(PACC_i = 0.90\)</span>: The trend is highly reliable, as <span class="math notranslate nohighlight">\(90\%\)</span> of patterns where <span class="math notranslate nohighlight">\(KTS_i\)</span> is a subsequence have the same trend <span class="math notranslate nohighlight">\(Trend_i\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(PACC_i = 0.30\)</span>: The trend is less reliable, with only <span class="math notranslate nohighlight">\(30\%\)</span> agreement among the matching patterns.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The PACC values for the Pset above are:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>kts</p></th>
+<th class="head text-center"><p>trend</p></th>
+<th class="head text-center"><p>count</p></th>
+<th class="head text-center"><p>oNum</p></th>
+<th class="head text-center"><p>sameTrendNum</p></th>
+<th class="head text-center"><p>PACC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>a</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-center"><p>10</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-center"><p>0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>a</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>10</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-center"><p>0.5</p></td>
+</tr>
+<tr class="row-even"><td><p>b</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>11</p></td>
+<td class="text-center"><p>11</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>d</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>ae</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>bc</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>7</p></td>
+<td class="text-center"><p>7</p></td>
+<td class="text-center"><p>7</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pacc</span><span class="p">(</span><span class="n">pset</span><span class="p">):</span>
@@ -1864,7 +2185,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PRSet</span> <span class="o">=</span> <span class="n">pacc</span><span class="p">(</span><span class="n">PRSet</span><span class="p">)</span>
-<span class="n">PRSet</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">PRSet</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1903,7 +2224,7 @@ document.write(`
       <td>3</td>
       <td>8</td>
       <td>3</td>
-      <td>0.375000</td>
+      <td>0.38</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1912,7 +2233,7 @@ document.write(`
       <td>3</td>
       <td>8</td>
       <td>5</td>
-      <td>0.625000</td>
+      <td>0.62</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1921,7 +2242,7 @@ document.write(`
       <td>1</td>
       <td>2</td>
       <td>2</td>
-      <td>1.000000</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1930,7 +2251,7 @@ document.write(`
       <td>1</td>
       <td>1</td>
       <td>1</td>
-      <td>1.000000</td>
+      <td>1.00</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1939,15 +2260,110 @@ document.write(`
       <td>1</td>
       <td>3</td>
       <td>2</td>
-      <td>0.666667</td>
+      <td>0.67</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<ul class="simple">
+<li><p>The set described above is called the <strong>Pattern Record Set (PRSet)</strong>.</p>
+<ul>
+<li><p>It consists of KTS-Trend pairs (KtsP) and their corresponding Pattern Accuracy Score (PACC) values.</p></li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="subsequence-model">
 <h2>Subsequence Model<a class="headerlink" href="#subsequence-model" title="Permalink to this heading">#</a></h2>
+<p>The Subsequence Model predicts the direction of the Close value for the next day based on a given new_KTS (a sequence of candlesticks/letters) and the Pattern Record Set (PRSet).</p>
+<p><strong>Steps of Prediction:</strong></p>
+<ul class="simple">
+<li><p>Find Subsequence Matches:</p>
+<ul>
+<li><p>Identify all <span class="math notranslate nohighlight">\(KTS_i\)</span> in the PRSet for which <span class="math notranslate nohighlight">\(KTS_i\)</span> is a subsequence of new_KTS</p></li>
+</ul>
+</li>
+<li><p>Select Based on Highest PACC:</p>
+<ul>
+<li><p>Among the matching subsequences, choose those with the highest PACC value.</p></li>
+</ul>
+</li>
+<li><p>Resolve Ties:</p>
+<ul>
+<li><p>If multiple subsequences have the same highest PACC, choose the most common trend among them as the prediction.</p></li>
+</ul>
+</li>
+<li><p>Fallback Prediction:</p>
+<ul>
+<li><p>If new_KTS has no matching subsequences in the PRSet, use the most common trend across the entire PRSet as the prediction.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>For the PRSet below if new_KTS = ‘abc’</p>
+<ul class="simple">
+<li><p>The subsequences from the PRSet are ‘a’, ‘b’, ‘bc’</p></li>
+<li><p>The highest PCAA belongs to ‘b’ and ‘bc’</p></li>
+<li><p>Trends for ‘b’ and ‘bc’ are both 1</p></li>
+<li><p>The most common trend among them is 1</p></li>
+<li><p>The prediction for new_KTS = ‘abc’ is 1, meaning that after ‘dbc’, there will be an increment in the Close value.</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>kts</p></th>
+<th class="head text-center"><p>trend</p></th>
+<th class="head text-center"><p>count</p></th>
+<th class="head text-center"><p>oNum</p></th>
+<th class="head text-center"><p>sameTrendNum</p></th>
+<th class="head text-center"><p>PACC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>a</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-center"><p>10</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-center"><p>0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>a</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>10</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-center"><p>0.5</p></td>
+</tr>
+<tr class="row-even"><td><p>b</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>11</p></td>
+<td class="text-center"><p>11</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>d</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>ae</p></td>
+<td class="text-center"><p>-1</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>bc</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>7</p></td>
+<td class="text-center"><p>7</p></td>
+<td class="text-center"><p>7</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">subsequence_model_predict</span><span class="p">(</span><span class="n">kts</span><span class="p">,</span> <span class="n">prset</span><span class="p">):</span>
@@ -2010,6 +2426,16 @@ document.write(`
 </section>
 <section id="test-set">
 <h2>Test Set<a class="headerlink" href="#test-set" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The data from <strong>February 2020</strong> is used to prepare the <strong>test set</strong> and evaluate the performance of the subsequence model.</p></li>
+<li><p>The <strong>KTS’s</strong> in the test set are generated using <strong>each 5 consecutive days</strong>. Therefore, each KTS has a length of <strong>5</strong> days.</p></li>
+<li><p>The <strong>actual future direction</strong> is determined by the <strong>change in direction</strong> from the last day of the 5-day period (the 5th day) to the <strong>6th day</strong>. This change in direction is used as the <strong>target trend</strong> for the KTS. It is also the fcc of the 5th day</p>
+<ul>
+<li><p>For example, if the Close value on the 5th day is higher than the 6th day, the trend would be <strong>Down (-1)</strong>, and if the Close value on the 6th day is higher, the trend would be <strong>Up (+1)</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<p>This setup helps in testing the model’s ability to predict the future trend based on historical data and trends in the KTS.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_test</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s1">&#39;AMZN&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2020-2-1&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2020-2-28&#39;</span><span class="p">)</span>
@@ -2017,9 +2443,8 @@ document.write(`
 <span class="n">df_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df_test</span><span class="o">.</span><span class="n">Date</span><span class="p">]</span>
 <span class="n">df_test</span> <span class="o">=</span> <span class="n">df_encoder</span><span class="p">(</span><span class="n">df_test</span><span class="p">)</span>
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">change_points</span><span class="p">(</span><span class="n">df_test</span><span class="p">)</span>
 <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;fcc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">df_test</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_test</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">+</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span>
-<span class="n">df_test</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_test</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2048,8 +2473,6 @@ document.write(`
       <th>Low</th>
       <th>Close</th>
       <th>code</th>
-      <th>change_points</th>
-      <th>change_types</th>
       <th>fcc</th>
     </tr>
   </thead>
@@ -2057,61 +2480,51 @@ document.write(`
     <tr>
       <th>0</th>
       <td>2020-02-03</td>
-      <td>100.529999</td>
-      <td>102.425003</td>
-      <td>100.012497</td>
-      <td>100.209999</td>
+      <td>100.53</td>
+      <td>102.43</td>
+      <td>100.01</td>
+      <td>100.21</td>
       <td>a</td>
-      <td>True</td>
-      <td>Start</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2020-02-04</td>
-      <td>101.494003</td>
-      <td>102.989998</td>
-      <td>100.768501</td>
-      <td>102.483498</td>
+      <td>101.49</td>
+      <td>102.99</td>
+      <td>100.77</td>
+      <td>102.48</td>
       <td>e</td>
-      <td>True</td>
-      <td>(1, -1)</td>
       <td>-1.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2020-02-05</td>
-      <td>103.551003</td>
-      <td>103.551003</td>
-      <td>101.599998</td>
-      <td>101.993500</td>
+      <td>103.55</td>
+      <td>103.55</td>
+      <td>101.60</td>
+      <td>101.99</td>
       <td>b</td>
-      <td>True</td>
-      <td>(-1, 1)</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2020-02-06</td>
-      <td>102.051003</td>
-      <td>102.815002</td>
-      <td>101.239998</td>
-      <td>102.511497</td>
+      <td>102.05</td>
+      <td>102.82</td>
+      <td>101.24</td>
+      <td>102.51</td>
       <td>e</td>
-      <td>False</td>
-      <td>(1, 1)</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2020-02-07</td>
-      <td>102.099503</td>
-      <td>104.926498</td>
-      <td>101.904999</td>
-      <td>103.963997</td>
+      <td>102.10</td>
+      <td>104.93</td>
+      <td>101.90</td>
+      <td>103.96</td>
       <td>e</td>
-      <td>False</td>
-      <td>(1, 1)</td>
       <td>1.0</td>
     </tr>
   </tbody>
@@ -2163,11 +2576,16 @@ document.write(`
 </section>
 <section id="prediction">
 <h2>Prediction<a class="headerlink" href="#prediction" title="Permalink to this heading">#</a></h2>
+<p>The prediction for the trend is done for each KTS generated using the test set, and the predicted values are compared with the actual trend values.</p>
+<ul class="simple">
+<li><p>The accuracy score function returns the percentage of correctly predicted trends.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">subsequence_model_score</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">prset</span><span class="p">):</span>
-    <span class="n">pred_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">subsequence_model_predict</span><span class="p">(</span><span class="n">kts</span><span class="p">,</span> <span class="n">prset</span><span class="p">)[</span><span class="s1">&#39;Prediction&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">kts</span><span class="p">,</span><span class="n">trend</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">pred_test</span><span class="p">,</span> <span class="p">[</span><span class="n">trend</span> <span class="k">for</span> <span class="p">(</span><span class="n">kts</span><span class="p">,</span><span class="n">trend</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+    <span class="n">pred_trend_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">subsequence_model_predict</span><span class="p">(</span><span class="n">kts</span><span class="p">,</span> <span class="n">prset</span><span class="p">)[</span><span class="s1">&#39;Prediction&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">kts</span><span class="p">,</span><span class="n">trend</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+    <span class="n">actual_trend_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">trend</span> <span class="k">for</span> <span class="p">(</span><span class="n">kts</span><span class="p">,</span><span class="n">trend</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">pred_trend_test</span><span class="p">,</span>  <span class="n">actual_trend_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
