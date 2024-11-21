@@ -174,6 +174,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="proj1_candlestick.html">Project-1: Candlestick Patterns</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Question-1: Threshold</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs_2_extend_encoding.html">Question-2: Extended Encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs_3_pacc.html">Question-3: PACC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs_4_genetic.html">Question-4: Genetic Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs_5_ml.html">Question-5: Machine Learning</a></li>
 </ul>
 </li>
 </ul>
@@ -324,6 +327,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#title">Title</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-with-threshold">Encoding with Threshold</a></li>
 </ul>
             </nav>
         </div>
@@ -337,6 +342,18 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="question-1-threshold">
 <h1>Question-1: Threshold<a class="headerlink" href="#question-1-threshold" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statistics</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="title">
 <h2>Title<a class="headerlink" href="#title" title="Permalink to this heading">#</a></h2>
 <p>Threshold-Based Pattern Mining for Stock Market Candlestick Analysis</p>
@@ -345,6 +362,254 @@ document.write(`
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
 <p>Pattern mining is an essential method for uncovering meaningful patterns in historical stock data. Among various techniques, candlestick analysis is widely used to capture daily stock price movements—open, high, low, and close—through a coded representation. However, small, insignificant differences in these values can impact the pattern coding and, consequently, predictions</p>
 <p>This project introduces a threshold-based approach to encoding and pattern mining for candlesticks, aiming to mitigate the influence of minor fluctuations. By optimizing a threshold to exclude minimal price differences, we aim to improve pattern reliability and maximize returns. Performance is evaluated through backtesting, with a focus on determining the ideal threshold for enhanced accuracy in stock price forecasting.</p>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_training_test_data</span><span class="p">(</span><span class="n">stock</span><span class="o">=</span><span class="s1">&#39;AMZN&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;2019-1-1&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2021-1-31&#39;</span><span class="p">,</span> <span class="n">training_ratio</span><span class="o">=</span><span class="mf">0.96</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="n">stock</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fcc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">+</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span>
+    <span class="n">training_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">*</span><span class="n">training_ratio</span><span class="p">)</span>
+    <span class="n">training_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">training_length</span><span class="p">,:]</span> 
+    <span class="n">test_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">training_length</span><span class="p">:,:]</span>
+    <span class="n">test_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span> <span class="o">=</span> <span class="n">get_training_test_data</span><span class="p">()</span>
+<span class="n">df_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">df_test</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((503, 6), (21, 6))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="encoding-with-threshold">
+<h2>Encoding with Threshold<a class="headerlink" href="#encoding-with-threshold" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="_images/threshold_values.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">encoder_threshold</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">lp</span><span class="p">,</span> <span class="n">threshold_pct</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold_pct</span> <span class="o">*</span> <span class="n">cp</span>
+
+    <span class="n">l1</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">op</span><span class="p">,</span><span class="n">cp</span><span class="p">)</span> <span class="o">-</span> <span class="n">lp</span>
+    <span class="n">l2</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">op</span><span class="p">,</span><span class="n">cp</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">op</span><span class="p">,</span><span class="n">cp</span><span class="p">)</span>
+    <span class="n">l3</span> <span class="o">=</span> <span class="n">hp</span> <span class="o">-</span> <span class="nb">max</span><span class="p">(</span><span class="n">op</span><span class="p">,</span><span class="n">cp</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">l1</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l2</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l3</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">op</span> <span class="o">&gt;</span> <span class="n">cp</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;a&#39;</span>
+        <span class="k">if</span> <span class="n">cp</span> <span class="o">&gt;</span> <span class="n">op</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;e&#39;</span>
+
+    <span class="k">elif</span> <span class="p">(</span><span class="n">l1</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l2</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l3</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">op</span> <span class="o">&gt;</span> <span class="n">cp</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;d&#39;</span>
+        <span class="k">if</span> <span class="n">cp</span> <span class="o">&gt;</span> <span class="n">op</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;h&#39;</span>
+
+    <span class="k">elif</span> <span class="p">(</span><span class="n">l1</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l2</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l3</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">op</span> <span class="o">&gt;</span> <span class="n">cp</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;b&#39;</span>
+        <span class="k">if</span> <span class="n">cp</span> <span class="o">&gt;</span> <span class="n">op</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;f&#39;</span>
+
+    <span class="k">elif</span> <span class="p">(</span><span class="n">l1</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l2</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l3</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;i&#39;</span>
+
+    <span class="k">elif</span> <span class="p">(</span><span class="n">l1</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l2</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l3</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">op</span> <span class="o">&gt;</span> <span class="n">cp</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;c&#39;</span>
+        <span class="k">if</span> <span class="n">cp</span> <span class="o">&gt;</span> <span class="n">op</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;g&#39;</span>
+
+    <span class="k">elif</span> <span class="p">(</span><span class="n">l1</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l2</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l3</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;i&#39;</span>
+
+    <span class="k">elif</span> <span class="p">(</span><span class="n">l1</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l2</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l3</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;j&#39;</span>
+
+    <span class="k">elif</span> <span class="p">(</span><span class="n">l1</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l2</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l3</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;k&#39;</span>
+
+    <span class="k">elif</span> <span class="p">(</span><span class="n">l1</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l2</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">l3</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;l&#39;</span>
+
+<span class="k">def</span> <span class="nf">df_encoder_threshold</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">threshold_pct</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+    <span class="n">data_</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">encoder_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data_</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="n">hp</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">lp</span> <span class="o">=</span> <span class="n">data_</span><span class="p">[[</span><span class="s1">&#39;High&#39;</span><span class="p">,</span><span class="s1">&#39;Open&#39;</span><span class="p">,</span> <span class="s1">&#39;Close&#39;</span><span class="p">,</span> <span class="s1">&#39;Low&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">encoder_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">encoder_threshold</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">lp</span><span class="p">,</span> <span class="n">threshold_pct</span><span class="p">))</span>
+    <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encoder_list</span>
+    <span class="k">return</span> <span class="n">data_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train_ext</span> <span class="o">=</span> <span class="n">df_encoder_threshold</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">threshold_pct</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+<span class="n">df_train_ext</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_train_ext</span> <span class="o">=</span> <span class="n">df_encoder_threshold</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">threshold_pct</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df_train_ext</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nn">Cell In[4], line 40,</span> in <span class="ni">df_encoder_threshold</span><span class="nt">(data, threshold_pct)</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="k">def</span> <span class="nf">df_encoder_threshold</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">threshold_pct</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">40</span>     <span class="n">data_</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="n">encoder_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data_</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+
+<span class="ne">NameError</span>: name &#39;temp&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train_ext</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>code
+k    466
+g     14
+c     12
+j      6
+l      4
+d      1
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train_ext</span> <span class="o">=</span> <span class="n">df_encoder_threshold</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">threshold_pct</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">df_train_ext</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>fcc</th>
+      <th>code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019-01-02</td>
+      <td>73.260002</td>
+      <td>77.667999</td>
+      <td>73.046501</td>
+      <td>76.956497</td>
+      <td>-1.0</td>
+      <td>g</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019-01-03</td>
+      <td>76.000504</td>
+      <td>76.900002</td>
+      <td>74.855499</td>
+      <td>75.014000</td>
+      <td>1.0</td>
+      <td>d</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019-01-04</td>
+      <td>76.500000</td>
+      <td>79.699997</td>
+      <td>75.915497</td>
+      <td>78.769501</td>
+      <td>1.0</td>
+      <td>h</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019-01-07</td>
+      <td>80.115501</td>
+      <td>81.727997</td>
+      <td>79.459503</td>
+      <td>81.475502</td>
+      <td>1.0</td>
+      <td>g</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019-01-08</td>
+      <td>83.234497</td>
+      <td>83.830498</td>
+      <td>80.830498</td>
+      <td>82.829002</td>
+      <td>1.0</td>
+      <td>j</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train_ext</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>code
+k    210
+g     81
+c     71
+j     47
+l     29
+b     14
+f     13
+h     12
+i     10
+d      8
+a      6
+e      2
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -413,6 +678,8 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#title">Title</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-with-threshold">Encoding with Threshold</a></li>
 </ul>
   </nav></div>
 
