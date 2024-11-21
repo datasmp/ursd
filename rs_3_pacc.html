@@ -341,6 +341,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-points">Change Points</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-and-labeling">Segmentation and Labeling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">PACC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#possible-deficiencies">Possible Deficiencies</a></li>
 </ul>
             </nav>
         </div>
@@ -1013,6 +1014,17 @@ sameTrend((KTS_i, Trend_i),(KTS_j, Trend_j))=
 </div></div></div>
 </div>
 </section>
+<section id="possible-deficiencies">
+<h2>Possible Deficiencies<a class="headerlink" href="#possible-deficiencies" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Index-53: The pattern ‘aaaea’ appears only once, but its PACC score is perfect (PACC = 1).</p>
+<ul class="simple">
+<li><p>Patterns that appear less than a specified threshold can be removed from the PSet.</p></li>
+</ul>
+</li>
+<li><p>The contribution of ‘ab’ to the PACC of ‘cdab’ and ‘cafffffbd’ is equal, even though ‘ab’ appears in ‘cafffffbd’ with many letters in between.</p></li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1092,6 +1104,7 @@ sameTrend((KTS_i, Trend_i),(KTS_j, Trend_j))=
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-points">Change Points</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-and-labeling">Segmentation and Labeling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">PACC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#possible-deficiencies">Possible Deficiencies</a></li>
 </ul>
   </nav></div>
 
