@@ -447,7 +447,7 @@ document.write(`
         <span class="k">return</span> <span class="s1">&#39;l&#39;</span>
 
 <span class="k">def</span> <span class="nf">df_encoder_threshold</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">threshold_pct</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
-    <span class="n">data_</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">data_</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">encoder_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data_</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
         <span class="n">hp</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">lp</span> <span class="o">=</span> <span class="n">data_</span><span class="p">[[</span><span class="s1">&#39;High&#39;</span><span class="p">,</span><span class="s1">&#39;Open&#39;</span><span class="p">,</span> <span class="s1">&#39;Close&#39;</span><span class="p">,</span> <span class="s1">&#39;Low&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -466,22 +466,87 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_train_ext</span> <span class="o">=</span> <span class="n">df_encoder_threshold</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">threshold_pct</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df_train_ext</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">Cell In[4], line 40,</span> in <span class="ni">df_encoder_threshold</span><span class="nt">(data, threshold_pct)</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="k">def</span> <span class="nf">df_encoder_threshold</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">threshold_pct</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">40</span>     <span class="n">data_</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="n">encoder_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data_</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="ne">NameError</span>: name &#39;temp&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>fcc</th>
+      <th>code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019-01-02</td>
+      <td>73.260002</td>
+      <td>77.667999</td>
+      <td>73.046501</td>
+      <td>76.956497</td>
+      <td>-1.0</td>
+      <td>g</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019-01-03</td>
+      <td>76.000504</td>
+      <td>76.900002</td>
+      <td>74.855499</td>
+      <td>75.014000</td>
+      <td>1.0</td>
+      <td>k</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019-01-04</td>
+      <td>76.500000</td>
+      <td>79.699997</td>
+      <td>75.915497</td>
+      <td>78.769501</td>
+      <td>1.0</td>
+      <td>k</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019-01-07</td>
+      <td>80.115501</td>
+      <td>81.727997</td>
+      <td>79.459503</td>
+      <td>81.475502</td>
+      <td>1.0</td>
+      <td>k</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019-01-08</td>
+      <td>83.234497</td>
+      <td>83.830498</td>
+      <td>80.830498</td>
+      <td>82.829002</td>
+      <td>1.0</td>
+      <td>k</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
