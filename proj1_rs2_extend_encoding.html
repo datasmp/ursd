@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Cover &#8212; Undergraduate Research on Stock Data</title>
+    <title>Question-2: Extended Encoding &#8212; Undergraduate Research on Stock Data</title>
   
   
   
@@ -62,10 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'cover';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'proj1_rs2_extend_encoding';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Preface" href="preface.html" />
+    <link rel="next" title="Question-4: Genetic Algorithm" href="proj1_rs4_genetic.html" />
+    <link rel="prev" title="Question-1: Threshold" href="proj1_rs1_threshold.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -140,7 +143,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="cover.html">
   
   
   
@@ -160,21 +163,21 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="cover.html">
                     Cover
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="acknowledge.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="research_paper_structure.html">Research Article Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_data.html">Stock Data Preparation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="proj1_intro.html">Project-1: Candlestick Patterns</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="proj1_intro.html">Project-1: Candlestick Patterns</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="proj1_coding.html">Coding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="proj1_rs1_threshold.html">Question-1: Threshold</a></li>
-<li class="toctree-l2"><a class="reference internal" href="proj1_rs2_extend_encoding.html">Question-2: Extended Encoding</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Question-2: Extended Encoding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="proj1_rs4_genetic.html">Question-4: Genetic Algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="proj1_rs5_ml.html">Question-5: Machine Learning</a></li>
 </ul>
@@ -233,7 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/cover.ipynb" target="_blank"
+      <li><a href="_sources/proj1_rs2_extend_encoding.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +305,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -313,11 +318,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Cover</h1>
+    <h1>Question-2: Extended Encoding</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#title">Title</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-encoding">Extended Encoding</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -327,11 +343,80 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="cover">
-<h1>Cover<a class="headerlink" href="#cover" title="Permalink to this heading">#</a></h1>
-<p><img alt="" src="_images/cover.png" /></p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="question-2-extended-encoding">
+<h1>Question-2: Extended Encoding<a class="headerlink" href="#question-2-extended-encoding" title="Permalink to this heading">#</a></h1>
+<p><img alt="" src="_images/extended_encoding2.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statistics</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+</pre></div>
 </div>
+</div>
+</div>
+<section id="title">
+<h2>Title<a class="headerlink" href="#title" title="Permalink to this heading">#</a></h2>
+<p>Extending Candlestick Encoding for Improved Stock Price Prediction</p>
+</section>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<p>Stock price predictability has traditionally been dismissed by the Efficient Market and Random Walk hypotheses, which claim that stock prices are inherently random. However, recent advancements in artificial intelligence and computational power are challenging this perspective, with emerging studies indicating that stock market behavior may indeed possess a level of predictabily.</p>
+<p>This project explores the predictive potential of candlestick patterns, which visually represent stock price movements through four key values: high, close, open, and low. Traditional candlestick encoding comprises twelve distinct codes, generated by comparing these values. We propose an extension of this encoding by categorizing the relative size of the difference between open and close values as small, medium, or large, based on historical data. This refined encoding aims to capture additional nuances in stock price movement patterns, potentially enhancing the accuracy of predictive models.</p>
+<p><img alt="" src="_images/extend_SML.png" /></p>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_training_test_data</span><span class="p">(</span><span class="n">stock</span><span class="o">=</span><span class="s1">&#39;AMZN&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;2019-1-1&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2021-1-31&#39;</span><span class="p">,</span> <span class="n">training_ratio</span><span class="o">=</span><span class="mf">0.96</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="n">stock</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fcc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">+</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span>
+    <span class="n">training_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">*</span><span class="n">training_ratio</span><span class="p">)</span>
+    <span class="n">training_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">training_length</span><span class="p">,:]</span> 
+    <span class="n">test_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">training_length</span><span class="p">:,:]</span>
+    <span class="n">test_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span> <span class="o">=</span> <span class="n">get_training_test_data</span><span class="p">()</span>
+<span class="n">df_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">df_test</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((503, 6), (21, 6))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extended-encoding">
+<h2>Extended Encoding<a class="headerlink" href="#extended-encoding" title="Permalink to this heading">#</a></h2>
+<p>Long White (Green) Candlestick</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle C_t - O_t &gt; \frac{H_t-L_t}{2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle C_t - O_t &gt; \frac{1}{10}\sum_{i=1}^{10}|C_{t-i}-O_{t-i}|\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle C_t - O_t &gt; \frac{H_t+L_t}{2}\times0.03\)</span></p></li>
+</ul>
+<p>Short White (Green) Candlestick</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle C_t - O_t &lt; \frac{H_t-L_t}{2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle C_t - O_t &lt; \frac{1}{10}\sum_{i=1}^{10}|C_{t-i}-O_{t-i}|\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle C_t - O_t &lt; \frac{H_t+L_t}{2}\times0.03\)</span></p></li>
+</ul>
+<p><img alt="" src="_images/long_cs.png" /></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -364,12 +449,21 @@ document.write(`
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="proj1_rs1_threshold.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Question-1: Threshold</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="preface.html"
+       href="proj1_rs4_genetic.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Preface</p>
+        <p class="prev-next-title">Question-4: Genetic Algorithm</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -379,6 +473,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#title">Title</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-encoding">Extended Encoding</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

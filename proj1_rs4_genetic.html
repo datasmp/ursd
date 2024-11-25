@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Acknowledgments &#8212; Undergraduate Research on Stock Data</title>
+    <title>Question-4: Genetic Algorithm &#8212; Undergraduate Research on Stock Data</title>
   
   
   
@@ -62,11 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'acknowledge';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'proj1_rs4_genetic';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Research Article Structure" href="research_paper_structure.html" />
-    <link rel="prev" title="Preface" href="preface.html" />
+    <link rel="next" title="Question-5: Machine Learning" href="proj1_rs5_ml.html" />
+    <link rel="prev" title="Question-2: Extended Encoding" href="proj1_rs2_extend_encoding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,16 +169,15 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledge.html">Acknowledgments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="research_paper_structure.html">Research Article Structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stock_data.html">Stock Data Preparation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="proj1_intro.html">P-1: Candlestick Patterns</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="coding.html">Coding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rs_1_threshold.html">Question-1: Threshold</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rs_2_extend_encoding.html">Question-2: Extended Encoding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rs_3_pacc.html">Question-3: PACC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rs_4_genetic.html">Question-4: Genetic Algorithm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rs_5_ml.html">Question-5: Machine Learning</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="proj1_intro.html">Project-1: Candlestick Patterns</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="proj1_coding.html">Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs1_threshold.html">Question-1: Threshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs2_extend_encoding.html">Question-2: Extended Encoding</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Question-4: Genetic Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs5_ml.html">Question-5: Machine Learning</a></li>
 </ul>
 </li>
 </ul>
@@ -235,7 +234,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/acknowledge.ipynb" target="_blank"
+      <li><a href="_sources/proj1_rs4_genetic.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +303,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -315,11 +316,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Acknowledgments</h1>
+    <h1>Question-4: Genetic Algorithm</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#title">Title</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -329,10 +339,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="acknowledgments">
-<h1>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this heading">#</a></h1>
-<p><img alt="" src="_images/acknowledgements2.png" /></p>
-<p>I would like to express my gratitude to all my past and current undergraduate students for selecting me as their mentor and providing valuable insights that have helped shape the creation of this resource.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="question-4-genetic-algorithm">
+<h1>Question-4: Genetic Algorithm<a class="headerlink" href="#question-4-genetic-algorithm" title="Permalink to this heading">#</a></h1>
+<p><img alt="" src="_images/genetic_algorithm2.png" /></p>
+<section id="title">
+<h2>Title<a class="headerlink" href="#title" title="Permalink to this heading">#</a></h2>
+<p>Genetic Algorithm Based Pattern Mining for Stock Market Candlestick Analysis</p>
+</section>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<p>Pattern mining plays a crucial role in uncovering significant trends within historical stock data. Among the available methods, candlestick analysis is a popular technique for visualizing daily stock price movements—open, high, low, and close—through a coded representation. However, even small variations in these values can impact the coding process and influence predictions. Additionally, the relative sizes of consecutive candlesticks carry critical information about future stock price movements.</p>
+<p>This project seeks to optimize the encoding of candlesticks by identifying ideal thresholds that enhance prediction accuracy. To achieve this, a genetic algorithm—a bio-inspired optimization technique based on natural selection—will be employed, providing a robust approach to improving pattern mining for stock market analysis.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -366,20 +384,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="preface.html"
+       href="proj1_rs2_extend_encoding.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Preface</p>
+        <p class="prev-next-title">Question-2: Extended Encoding</p>
       </div>
     </a>
     <a class="right-next"
-       href="research_paper_structure.html"
+       href="proj1_rs5_ml.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Research Article Structure</p>
+        <p class="prev-next-title">Question-5: Machine Learning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -389,6 +407,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#title">Title</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
