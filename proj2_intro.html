@@ -1,0 +1,780 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Project-2: Novel Factors &#8212; Undergraduate Research on Stock Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'proj2_intro';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Question-1: Technical Indicators" href="proj2_rs1_technical_ind.html" />
+    <link rel="prev" title="Question-5: Machine Learning" href="proj1_rs5_ml.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="cover.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/ursd.png" class="logo__image only-light" alt="Undergraduate Research on Stock Data - Home"/>
+    <script>document.write(`<img src="_static/ursd.png" class="logo__image only-dark" alt="Undergraduate Research on Stock Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="cover.html">
+                    Cover
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledge.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="what_research.html">What is Research?</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="why_ur.html">Why Undergraduate Research?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="why_ur_grants.html">UR Grants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_ur_journals.html">UR Journals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_ur_conferences.html">UR Conferences</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="research_paper_structure.html">Research Article Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stock_data.html">Stock Data Preparation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="proj1_intro.html">Project-1: Candlestick Patterns</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="proj1_coding.html">Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs1_threshold.html">Question-1: Threshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs2_extend_encoding.html">Question-2: Extended Encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs3_pacc.html">Question-3: PACC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs4_genetic.html">Question-4: Genetic Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs5_ml.html">Question-5: Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Project-2: Novel Factors</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs1_technical_ind.html">Question-1: Technical Indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs2_genetic_alg.html">Question-2: Genetic Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs3_sp500.html">Question-3: SP500</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs4_classical.html">Question-4: Classical ML</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/proj2_intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Project-2: Novel Factors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cover">Cover</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#literature-review">Literature Review</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="project-2-novel-factors">
+<h1>Project-2: Novel Factors<a class="headerlink" href="#project-2-novel-factors" title="Permalink to this heading">#</a></h1>
+<p><img alt="Title of this section is Novel Factors" src="_images/novel_factors2.png" /></p>
+<p>In this project, we will follow the methodology described in the following article:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2772941923000054">Forecasting and optimization stock predictions: Varying asset profile, time window, and hyperparameter factors.</a></p></li>
+<li><p>In this article different values for multi-time windows, training batch size, stopping criteria, training data ratio, and financial technical indicators are used to increase the performance of machine learning models that are built.</p></li>
+</ul>
+<p>In this section, we will define key concepts and provide explanations of the tools and techniques referenced in the article.</p>
+<section id="cover">
+<h2>Cover<a class="headerlink" href="#cover" title="Permalink to this heading">#</a></h2>
+<p><img alt="Cover of the paper with different parts highligted including volume, year, journal name, title, author." src="_images/cover_canada.png" /></p>
+<p><strong>General Information About the Article</strong></p>
+<p><strong>Title:</strong> Forecasting and optimization stock predictions: Varying asset profile, time window, and hyperparameter factors</p>
+<p><strong>Author:</strong> C. Alzaman</p>
+<p><strong>Year of Publication:</strong> 2023</p>
+<p><strong>Volume:</strong> 5</p>
+<p><strong>Article Number:</strong> 200052</p>
+<p><strong>Published In:</strong> Systems and Soft Computing, ScienceDirect (Elsevier)</p>
+<p><strong>Focus:</strong> Improving stock prediction models through enhanced hyperparameter tuning</p>
+</section>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<p><img alt="Abstract of the paper with different parts highlighted in color." src="_images/abstract_canada.png" /></p>
+<p><strong>Background</strong></p>
+<p>Machine learning (ML) is a powerful tool used in many fields, including finance. Researchers have been trying to use ML to predict stock market behavior.</p>
+<p><strong>Problem (Motivation)</strong></p>
+<p>However, predicting the stock market is difficult because:</p>
+<ul class="simple">
+<li><p>The data is hard to collect and prepare.</p></li>
+<li><p>Choosing and designing the right algorithm is complex.</p></li>
+<li><p>Hyperparameters (the settings of ML models) are tricky to optimize.</p></li>
+<li><p>It’s not always clear which features (inputs) to include.</p></li>
+<li><p>Stock prices are naturally volatile and unpredictable.</p></li>
+</ul>
+<p><strong>Purpose</strong></p>
+<p>This study reviews existing research and also explores new factors that may improve stock prediction models.</p>
+<p><strong>Method (Proposed Solution)</strong></p>
+<p>The researchers tested several ideas:</p>
+<ul class="simple">
+<li><p>Using different time windows (how far back in time the training data goes).</p></li>
+<li><p>Changing training batch size, stopping criteria, and training data ratio.</p></li>
+<li><p>Adding financial technical indicators (like moving averages).</p></li>
+<li><p>Applying genetic algorithms for hyperparameter optimization instead of traditional random-grid search.</p></li>
+</ul>
+<p><strong>Results</strong></p>
+<ul class="simple">
+<li><p>Changing the training time window made a big difference, with statistically significant results (p &lt; 0.0001).</p></li>
+<li><p>Using genetic-based hyperparameter optimization improved performance by about 40% compared to random-grid search.</p></li>
+<li><p>Adding technical indicators did not improve prediction accuracy much, but it slightly improved the ability to predict the direction (up or down) of stock movements for some stocks.</p></li>
+<li><p>The time window and the characteristics of the stock (such as which stock, and which period of time is studied) greatly affected the results.</p></li>
+</ul>
+<p><strong>Conclusion</strong></p>
+<p>The study shows that the way data is prepared, especially the time window chosen, has a major impact on stock market prediction. While some methods, like genetic optimization, significantly improve accuracy, others (like technical indicators) have only limited benefits. Predicting stock prices remains challenging because results vary a lot depending on the stock and time period.</p>
+</section>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Introduction</p></li>
+<li><p>Literature review</p></li>
+<li><p>Methods</p>
+<ul class="simple">
+<li><p>3.1. Background on LSTM</p></li>
+<li><p>3.2. Background on genetic algorithm</p></li>
+<li><p>3.3. Background on technical indicators</p></li>
+</ul>
+</li>
+<li><p>Results</p>
+<ul class="simple">
+<li><p>4.1. Random-Grid search</p></li>
+<li><p>4.2. Technical parameters</p></li>
+<li><p>4.3. Genetic hyperparameter optimization</p></li>
+<li><p>4.4. Genetic algorithm and technical indicators</p></li>
+<li><p>4.5. Discussion</p></li>
+</ul>
+</li>
+<li><p>Conclusion</p></li>
+</ol>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p><strong>Stock Prediction – Two Main Approaches</strong></p>
+<ul class="simple">
+<li><p>Fundamental Analysis</p>
+<ul>
+<li><p>Focuses on a company’s overall economic health.</p></li>
+<li><p>Looks at things like past performance, assets, and earnings.</p></li>
+<li><p>Does not focus directly on the stock price itself.</p></li>
+</ul>
+</li>
+<li><p>Technical Analysis</p>
+<ul>
+<li><p>Focuses on past stock price patterns and charts.</p></li>
+<li><p>The idea is that patterns in past movements may help predict future prices.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Theories About Stock Prices</strong></p>
+<ul class="simple">
+<li><p>Efficient Market Hypothesis (EMH)</p>
+<ul>
+<li><p>Says it is impossible to predict stock prices because all available information is already reflected in the current price.</p></li>
+</ul>
+</li>
+<li><p>Random Walk Hypothesis (RWH)</p>
+<ul>
+<li><p>Suggests stock prices move randomly.</p></li>
+<li><p>A stock’s future price depends only on new (future) information, not on past prices.</p></li>
+</ul>
+</li>
+<li><p>Counterarguments from Research</p>
+<ul>
+<li><p>Some studies (e.g., Chen et al., Basak et al.) argue that parts of stock behavior may actually be predictable.</p></li>
+<li><p>Liu and Yeh showed that the relationship between stock weights and portfolio performance is nonlinear (not a straight-line/simple relationship).</p></li>
+</ul>
+</li>
+<li><p>Role of Neural Networks</p>
+<ul>
+<li><p>Because stock data often show nonlinear patterns,</p></li>
+<li><p>Neural networks can be helpful tools for modeling and predicting stock movements.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Artificial Intelligence (AI) and Machine Learning (ML)</strong></p>
+<ul class="simple">
+<li><p>Machine Learning (ML): A branch of Artificial Intelligence.</p></li>
+<li><p>Goal of ML: Train machines on data –&gt; help them learn patterns –&gt; produce reliable predictions or outputs.</p></li>
+<li><p>How ML works: Uses algorithms and statistical models.</p></li>
+</ul>
+<p><strong>Deep Learning (DL)</strong></p>
+<ul class="simple">
+<li><p>A subset of ML designed for more complex problems (like big data).</p></li>
+<li><p>Uses Artificial Neural Networks (ANNs) to mimic how the human brain processes information.</p></li>
+</ul>
+<p><img alt="The diagram of a perceptron" src="_images/perceptron_my.png" /></p>
+<p><strong>LSTM (Long Short-Term Memory)</strong></p>
+<ul class="simple">
+<li><p>A special type of Recurrent Neural Network (RNN).</p></li>
+<li><p>Works well with sequential data (data that comes in order, step by step).</p></li>
+<li><p>Stock prices are collected over time (daily, hourly, etc.), which makes them a time series.</p></li>
+<li><p>Why <a class="reference external" href="https://en.wikipedia.org/wiki/Long_short-term_memory">LSTM</a> is useful: It can capture patterns in sequences, making it highly applicable to stock price prediction.</p></li>
+</ul>
+<p><img alt="LSTM Cell diagram from wikipedia" src="_images/LSTM_Cell.svg" /></p>
+<p><strong>What is Hyperparameter Optimization?</strong></p>
+<ul class="simple">
+<li><p>Hyperparameters = settings chosen before training a machine learning model.</p></li>
+<li><p>Examples of hyperparameters:</p>
+<ul>
+<li><p>Number of neurons in a layer</p></li>
+<li><p>Number of hidden layers</p></li>
+<li><p>Batch size (how much data is processed at once)</p></li>
+<li><p>Learning rate (how fast the model learns)</p></li>
+</ul>
+</li>
+<li><p>Hyperparameter optimization = the process of finding the best values for these settings so the model performs well.</p></li>
+</ul>
+<p><strong>Methods Compared</strong></p>
+<ul class="simple">
+<li><p>Random Grid Search</p>
+<ul>
+<li><p>Tries different hyperparameter combinations randomly from a set of possibilities.</p></li>
+<li><p>Can be inefficient.</p></li>
+</ul>
+</li>
+<li><p>Genetic Search Algorithm</p>
+<ul>
+<li><p>Inspired by biological evolution (selection, mutation, etc.).</p></li>
+<li><p>Iteratively improves hyperparameters.</p></li>
+<li><p>Found to be better than random grid search in this work.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Key Findings</strong></p>
+<ul class="simple">
+<li><p>The genetic search algorithm produced superior results compared to random grid search.</p></li>
+<li><p>The choice of time period (the window of data used for training) has a strong effect on how well the model can learn and predict stock behavior.</p></li>
+</ul>
+<p><strong>Remark:</strong> The last paragraph of the introduction provides a section-by-section summary of the entire paper.</p>
+</section>
+<section id="literature-review">
+<h2>Literature Review<a class="headerlink" href="#literature-review" title="Permalink to this heading">#</a></h2>
+<p><strong>Performance of Different Machine Learning Techniques in Stock Prediction</strong></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Technique / Method</p></th>
+<th class="head"><p>Authors</p></th>
+<th class="head"><p>Key Result / Contribution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>XGBoost</strong></p></td>
+<td><p>Chen &amp; Guestrin [7]</p></td>
+<td><p>Low computational cost, strong performance; combines loss function with penalty to reduce variance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LSTM Models</strong></p></td>
+<td><p>Mehtab et al. [8]</p></td>
+<td><p>Proposed 4 LSTM models (3 univariate, 1 multivariate) for stock prediction.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Neural Networks</strong></p></td>
+<td><p>Liu &amp; Yeh [6]</p></td>
+<td><p>Identified patterns and relationships in stock market assets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LSTM + Paragraph Vector (Hybrid)</strong></p></td>
+<td><p>Akita et al. [9]</p></td>
+<td><p>Combined numerical (LSTM) and textual (Paragraph Vector) data for predictions.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>LSTM with Strategies</strong></p></td>
+<td><p>Nelson et al. [10]</p></td>
+<td><p>Predicted stock movements and suggested buying strategies.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SVM + Reinforcement Learning</strong></p></td>
+<td><p>Shen et al. [11]</p></td>
+<td><p>Achieved ~75% accuracy using features from global stock indices + individual stocks.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Effective Transfer Entropy + ML Models</strong></p></td>
+<td><p>Kim et al. [12]</p></td>
+<td><p>Best results with ANN and LSTM when integrating Effective Transfer Entropy.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Comparison of Machine Learning Techniques for Stock Prediction</strong></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Authors</p></th>
+<th class="head"><p>Techniques Compared</p></th>
+<th class="head"><p>Key Findings</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Patel et al. [13]</strong></p></td>
+<td><p>Naive Bayes + indicator analysis</p></td>
+<td><p>Conducted thorough indicator analysis; compared multiple techniques for stock prediction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ismail et al. [14]</strong></p></td>
+<td><p>Logistic Regression, ANN, SVM, Random Forest</p></td>
+<td><p>Used daily log returns + persistent homology; included features like SMA, WMA, momentum, stochastic, MACD10. Found prediction accuracy ranging <strong>47.41% – 64.29%</strong> (ANN: <strong>52.73% – 63.27%</strong>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Kumar et al. [15]</strong></p></td>
+<td><p>Various ML models</p></td>
+<td><p>Found <strong>Random Forest</strong> superior among compared methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Vijh et al. [16]</strong></p></td>
+<td><p>Random Forest, Neural Networks</p></td>
+<td><p>Found both <strong>Random Forest</strong> and <strong>Neural Networks</strong> to be adequate for stock prediction.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Portfolio Selection with Machine Learning in Stock Prediction</strong></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Authors</p></th>
+<th class="head"><p>Techniques Used</p></th>
+<th class="head"><p>Key Findings</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Chen et al. [4]</strong></p></td>
+<td><p>Hybrid model: XGBoost + Firefly Algorithm + Monte Carlo</p></td>
+<td><p>Predicted stock prices and used Monte Carlo to allocate capital based on portfolio return/variance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Paiva et al. [17]</strong></p></td>
+<td><p>Fusion of SVM + Mean Variance (multi-objective optimization)</p></td>
+<td><p>Showed significant gains compared to a random model in predicting financial stock performance.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Contributions of This Work</strong></p>
+<ul class="simple">
+<li><p>Review of Multiple Stocks. Unlike most literature that focuses on single stocks or portfolio trading, this work reviews multiple assets.</p></li>
+<li><p>Notes that multi-asset studies are less common in stock prediction compared to cryptocurrency studies.</p></li>
+</ul>
+<p><strong>Context from Literature</strong></p>
+<ul class="simple">
+<li><p>Shahriari et al. [23]: Used ordinal partition networks to study variations in 10 cryptocurrencies (e.g., Bitcoin, Binance Coin, XRP).</p></li>
+<li><p>Sigaki et al. [24]: Focused on market efficiency theory.</p></li>
+</ul>
+<p><strong>This work differs by focusing on technical hyperparameters.</strong></p>
+<ul class="simple">
+<li><p>Focus on Hyperparameters</p></li>
+<li><p>Table 1 summarizes recent research in machine learning for stock prediction, including important factors integrated into prior works.</p></li>
+</ul>
+<p><strong>Points out gaps</strong></p>
+<ul class="simple">
+<li><p>Little attention given to the effect of time period (size, start and end dates) on model learning and prediction.</p></li>
+<li><p>Training ratio sensitivity rarely discussed.</p></li>
+<li><p>Feature selection and analysis largely absent.</p></li>
+</ul>
+<p><strong>Technical Contributions in This Work</strong></p>
+<ul class="simple">
+<li><p>Introduce technical indicators into the model.</p></li>
+<li><p>Test performance with and without these indicators.</p></li>
+<li><p>Perform feature selection using grid search.</p></li>
+<li><p>Eliminate features that are not significant.</p></li>
+</ul>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="proj1_rs5_ml.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Question-5: Machine Learning</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="proj2_rs1_technical_ind.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Question-1: Technical Indicators</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cover">Cover</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#literature-review">Literature Review</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yusuf Danisman
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
