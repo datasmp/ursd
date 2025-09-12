@@ -188,6 +188,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="proj1_rs5_ml.html">Question-5: Machine Learning</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="proj2_intro.html">Project-2: Novel Factors</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="proj2_coding.html">Coding</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs1_technical_ind.html">Question-1: Technical Indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs2_genetic_alg.html">Question-2: Genetic Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs3_sp500.html">Question-3: SP500</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs4_classical.html">Question-4: Classical ML</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -359,7 +369,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="coding">
 <h1>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h1>
-<p><img alt="" src="_images/coding2.png" /></p>
+<p><img alt="Section Title: Coding" src="_images/coding2.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
@@ -403,7 +413,88 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((503, 6), (21, 6))
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">YFRateLimitError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span> <span class="o">=</span> <span class="n">get_training_test_data</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">df_test</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="nn">Cell In[2], line 2,</span> in <span class="ni">get_training_test_data</span><span class="nt">(stock, start, end, training_ratio)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">get_training_test_data</span><span class="p">(</span><span class="n">stock</span><span class="o">=</span><span class="s1">&#39;AMZN&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;2019-1-1&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2021-1-31&#39;</span><span class="p">,</span> <span class="n">training_ratio</span><span class="o">=</span><span class="mf">0.96</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="n">stock</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/base.py:80,</span> in <span class="ni">TickerBase.history</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span> <span class="nd">@utils</span><span class="o">.</span><span class="n">log_indent_decorator</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="k">def</span> <span class="nf">history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">80</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lazy_load_price_history</span><span class="p">()</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/scrapers/history.py:175,</span> in <span class="ni">PriceHistory.history</span><span class="nt">(self, period, interval, start, end, prepost, actions, auto_adjust, back_adjust, repair, keepna, proxy, rounding, timeout, raise_errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span>         <span class="n">get_fn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">cache_get</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">175</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">get_fn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span>         <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span>         <span class="n">proxy</span><span class="o">=</span><span class="n">proxy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="k">if</span> <span class="s2">&quot;Will be right back&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">text</span> <span class="ow">or</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span>         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;*** YAHOO! FINANCE IS CURRENTLY DOWN! ***</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span>                            <span class="s2">&quot;Our engineers are working quickly to resolve &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span>                            <span class="s2">&quot;the issue. Thank you for your patience.&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/data.py:32,</span> in <span class="ni">lru_cache_freezeargs.&lt;locals&gt;.wrapped</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="n">args</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="nb">tuple</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">arg</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="ne">---&gt; </span><span class="mi">32</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/data.py:416,</span> in <span class="ni">YfData.cache_get</span><span class="nt">(self, url, user_agent_headers, params, proxy, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span> <span class="nd">@lru_cache_freezeargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">414</span> <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="n">cache_maxsize</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">415</span> <span class="k">def</span> <span class="nf">cache_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">user_agent_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">proxy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">416</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user_agent_headers</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">proxy</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/data.py:347,</span> in <span class="ni">YfData.get</span><span class="nt">(self, url, user_agent_headers, params, proxy, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span> <span class="nd">@utils</span><span class="o">.</span><span class="n">log_indent_decorator</span>
+<span class="g g-Whitespace">    </span><span class="mi">346</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">user_agent_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">proxy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">347</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">request_method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">user_agent_headers</span><span class="o">=</span><span class="n">user_agent_headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">proxy</span><span class="o">=</span><span class="n">proxy</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/data.py:409,</span> in <span class="ni">YfData._make_request</span><span class="nt">(self, url, request_method, user_agent_headers, body, params, proxy, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span>     <span class="c1"># Raise exception if rate limited</span>
+<span class="g g-Whitespace">    </span><span class="mi">408</span>     <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">409</span>         <span class="k">raise</span> <span class="n">YFRateLimitError</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="ne">YFRateLimitError</span>: Too Many Requests. Rate limited. Try after a while.
 </pre></div>
 </div>
 </div>

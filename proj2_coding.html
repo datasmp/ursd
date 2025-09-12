@@ -1,0 +1,2554 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Coding &#8212; Undergraduate Research on Stock Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'proj2_coding';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Question-1: Technical Indicators" href="proj2_rs1_technical_ind.html" />
+    <link rel="prev" title="Project-2: Novel Factors" href="proj2_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="cover.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/ursd.png" class="logo__image only-light" alt="Undergraduate Research on Stock Data - Home"/>
+    <script>document.write(`<img src="_static/ursd.png" class="logo__image only-dark" alt="Undergraduate Research on Stock Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="cover.html">
+                    Cover
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledge.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="what_research.html">What is Research?</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="why_ur.html">Why Undergraduate Research?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="why_ur_grants.html">UR Grants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_ur_journals.html">UR Journals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="why_ur_conferences.html">UR Conferences</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="research_paper_structure.html">Research Article Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stock_data.html">Stock Data Preparation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="proj1_intro.html">Project-1: Candlestick Patterns</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="proj1_coding.html">Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs1_threshold.html">Question-1: Threshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs2_extend_encoding.html">Question-2: Extended Encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs3_pacc.html">Question-3: PACC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs4_genetic.html">Question-4: Genetic Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj1_rs5_ml.html">Question-5: Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="proj2_intro.html">Project-2: Novel Factors</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Coding</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs1_technical_ind.html">Question-1: Technical Indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs2_genetic_alg.html">Question-2: Genetic Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs3_sp500.html">Question-3: SP500</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs4_classical.html">Question-4: Classical ML</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/proj2_coding.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Coding</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Coding</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-return">Log Return</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#percentage-change">Percentage Change</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lagged-data">Lagged Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-and-output-data">Input and Output Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input">Input</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-data">Split Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">KNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlp">MLP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-data">Test Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keras">Keras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="coding">
+<h1>Coding<a class="headerlink" href="#coding" title="Permalink to this heading">#</a></h1>
+<p><img alt="Section Title: Coding" src="_images/coding2.png" /></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-preparation">
+<h1>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>We will use the Yahoo Finance API to import stock data, and we will also use the pandas and NumPy packages.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We will use the following constants throughout this notebook. Using dictionaries allows us to store key–value pairs within a single data structure.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">STOCK_DICT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Apple&#39;</span><span class="p">:</span> <span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;Tesla&#39;</span><span class="p">:</span> <span class="s1">&#39;TSLA&#39;</span><span class="p">,</span> <span class="s1">&#39;Amazon&#39;</span><span class="p">:</span> <span class="s1">&#39;AMZN&#39;</span><span class="p">,</span> <span class="s1">&#39;Visa&#39;</span><span class="p">:</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;Microsoft&#39;</span><span class="p">:</span> <span class="s1">&#39;MSFT&#39;</span><span class="p">}</span>
+<span class="n">START</span> <span class="o">=</span> <span class="s1">&#39;2015-1-1&#39;</span>
+<span class="n">END</span> <span class="o">=</span> <span class="s1">&#39;2020-12-31&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>It is good practice to keep all the Close values of the stocks we are considering in a single DataFrame, as this makes it easier to access them.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">STOCK_DICT</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">START</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">END</span><span class="p">)</span><span class="o">.</span><span class="n">Close</span>
+    
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">YFRateLimitError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">STOCK_DICT</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">df</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">START</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">END</span><span class="p">)</span><span class="o">.</span><span class="n">Close</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/base.py:80,</span> in <span class="ni">TickerBase.history</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span> <span class="nd">@utils</span><span class="o">.</span><span class="n">log_indent_decorator</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="k">def</span> <span class="nf">history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">80</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lazy_load_price_history</span><span class="p">()</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/scrapers/history.py:175,</span> in <span class="ni">PriceHistory.history</span><span class="nt">(self, period, interval, start, end, prepost, actions, auto_adjust, back_adjust, repair, keepna, proxy, rounding, timeout, raise_errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span>         <span class="n">get_fn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">cache_get</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">175</span>     <span class="n">data</span> <span class="o">=</span> <span class="n">get_fn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span>         <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span>         <span class="n">proxy</span><span class="o">=</span><span class="n">proxy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="k">if</span> <span class="s2">&quot;Will be right back&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">text</span> <span class="ow">or</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span>         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;*** YAHOO! FINANCE IS CURRENTLY DOWN! ***</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span>                            <span class="s2">&quot;Our engineers are working quickly to resolve &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span>                            <span class="s2">&quot;the issue. Thank you for your patience.&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/data.py:32,</span> in <span class="ni">lru_cache_freezeargs.&lt;locals&gt;.wrapped</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="n">args</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="nb">tuple</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">arg</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="ne">---&gt; </span><span class="mi">32</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/data.py:416,</span> in <span class="ni">YfData.cache_get</span><span class="nt">(self, url, user_agent_headers, params, proxy, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span> <span class="nd">@lru_cache_freezeargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">414</span> <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="n">cache_maxsize</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">415</span> <span class="k">def</span> <span class="nf">cache_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">user_agent_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">proxy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">416</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">user_agent_headers</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">proxy</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/data.py:347,</span> in <span class="ni">YfData.get</span><span class="nt">(self, url, user_agent_headers, params, proxy, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span> <span class="nd">@utils</span><span class="o">.</span><span class="n">log_indent_decorator</span>
+<span class="g g-Whitespace">    </span><span class="mi">346</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">user_agent_headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">proxy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">347</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">request_method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">user_agent_headers</span><span class="o">=</span><span class="n">user_agent_headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">proxy</span><span class="o">=</span><span class="n">proxy</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/utils.py:104,</span> in <span class="ni">log_indent_decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entering </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="k">with</span> <span class="n">IndentationContext</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exiting </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">()&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/yfinance/data.py:409,</span> in <span class="ni">YfData._make_request</span><span class="nt">(self, url, request_method, user_agent_headers, body, params, proxy, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span>     <span class="c1"># Raise exception if rate limited</span>
+<span class="g g-Whitespace">    </span><span class="mi">408</span>     <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">429</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">409</span>         <span class="k">raise</span> <span class="n">YFRateLimitError</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="ne">YFRateLimitError</span>: Too Many Requests. Rate limited. Try after a while.
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>To remove the time portion from the date values, we first reset the index (row labels). This converts the index, which contains the Date values, into a column. Then, we use .dt.date to extract only the date part from each value in that column.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Apple</th>
+      <th>Tesla</th>
+      <th>Amazon</th>
+      <th>Visa</th>
+      <th>Microsoft</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.26</td>
+      <td>14.62</td>
+      <td>15.43</td>
+      <td>61.46</td>
+      <td>39.93</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>23.58</td>
+      <td>14.01</td>
+      <td>15.11</td>
+      <td>60.11</td>
+      <td>39.57</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.58</td>
+      <td>14.09</td>
+      <td>14.76</td>
+      <td>59.72</td>
+      <td>38.99</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.91</td>
+      <td>14.06</td>
+      <td>14.92</td>
+      <td>60.52</td>
+      <td>39.48</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.83</td>
+      <td>14.04</td>
+      <td>15.02</td>
+      <td>61.33</td>
+      <td>40.64</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>The info() method in pandas provides basic information about a DataFrame, such as the number of entries, column names, non-null counts, and data types.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 1510 entries, 2015-01-02 to 2020-12-30
+Data columns (total 5 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   Apple      1510 non-null   float64
+ 1   Tesla      1510 non-null   float64
+ 2   Amazon     1510 non-null   float64
+ 3   Visa       1510 non-null   float64
+ 4   Microsoft  1510 non-null   float64
+dtypes: float64(5)
+memory usage: 70.8+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The built-in len() function returns the number of rows in a DataFrame.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1510
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>A DataFrame’s shape attribute returns the number of rows and columns as a tuple.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1510, 5)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The describe() method in pandas provides basic descriptive statistics for each column of a DataFrame. These include</p>
+<ul>
+<li><p>number of values (count)</p></li>
+<li><p>mean</p></li>
+<li><p>standard deviation</p></li>
+<li><p>minimum value</p></li>
+<li><p>25th percentile (25% of the values are less than or equal to this value)</p></li>
+<li><p>50th percentile (also called the median)</p></li>
+<li><p>75th percentile (75% of the values are less than or equal to this value)</p></li>
+<li><p>maximum value</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Apple</th>
+      <th>Tesla</th>
+      <th>Amazon</th>
+      <th>Visa</th>
+      <th>Microsoft</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1510.000000</td>
+      <td>1510.000000</td>
+      <td>1510.000000</td>
+      <td>1510.000000</td>
+      <td>1510.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>45.501393</td>
+      <td>30.976507</td>
+      <td>68.798972</td>
+      <td>117.331868</td>
+      <td>92.857471</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>24.912471</td>
+      <td>37.139818</td>
+      <td>39.538892</td>
+      <td>45.824109</td>
+      <td>50.984856</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>20.624052</td>
+      <td>9.578000</td>
+      <td>14.347500</td>
+      <td>57.134914</td>
+      <td>34.501617</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>27.004886</td>
+      <td>15.139666</td>
+      <td>36.388124</td>
+      <td>73.924736</td>
+      <td>48.993054</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>38.962173</td>
+      <td>18.944000</td>
+      <td>59.735750</td>
+      <td>108.241344</td>
+      <td>79.382626</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>51.278799</td>
+      <td>23.162333</td>
+      <td>91.450748</td>
+      <td>159.760929</td>
+      <td>127.795849</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>133.190186</td>
+      <td>231.666672</td>
+      <td>176.572495</td>
+      <td>211.000854</td>
+      <td>222.111893</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="log-return">
+<h2>Log Return<a class="headerlink" href="#log-return" title="Permalink to this heading">#</a></h2>
+<p>The log return <span class="math notranslate nohighlight">\(r_t\)</span> is calculated as:</p>
+<p><span class="math notranslate nohighlight">\(\displaystyle r_t = ln\left(\frac{P_t}{P_{t-1}}\right) = ln(P_t) - ln(P_{t-1})\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(P_t\)</span> is the current price, <span class="math notranslate nohighlight">\(P_{t-1}\)</span> is the previous price, and <span class="math notranslate nohighlight">\(ln\)</span> denotes the natural logarithm.</p>
+<p><strong>Why Use Log Returns?</strong></p>
+<ul class="simple">
+<li><p>Time Additivity</p>
+<ul>
+<li><p>Log returns can be summed across time.</p></li>
+<li><p>Example: The log return over a year is just the sum of monthly log returns. This is not true for simple (arithmetic) returns.</p></li>
+<li><p><span class="math notranslate nohighlight">\(r_t + r_{t+1} = ln(P_t) - ln(P_{t-1}) + ln(P_{t+1}) - ln(P_{t}) = ln(P_{t+1}) - ln(P_{t-1})\)</span></p></li>
+</ul>
+</li>
+<li><p>Statistical Properties</p>
+<ul>
+<li><p>Log returns often approximate a normal distribution better than simple returns, which is useful for many statistical and financial models</p></li>
+</ul>
+</li>
+<li><p>Symmetry</p>
+<ul>
+<li><p>Percentage changes (simple returns) are asymmetric: a +10% gain and a −10% loss don’t cancel out.</p></li>
+<li><p>If P is the initial value then the final value is <span class="math notranslate nohighlight">\(P\times 1.1\times 0.9 = P\times 0.99\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(ln(1.1) + ln(0.9) = -0.01\)</span></p></li>
+<li><p>The difference is in how returns combine mathematically.</p></li>
+<li><p>With simple returns, you need to multiply growth factors: <span class="math notranslate nohighlight">\((1+r_1)(1+r_2)\)</span></p></li>
+<li><p>With log returns, you just add them: <span class="math notranslate nohighlight">\(r_1 + r_2\)</span></p></li>
+<li><p>Log returns are symmetric in relative changes, which makes them easier to analyze.</p></li>
+</ul>
+</li>
+</ul>
+<p>In the following code, the shift(n) method moves the values of a column down by n units, so that in each row the shifted values represent past values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_toy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Initial&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;day1&#39;</span><span class="p">,</span> <span class="s1">&#39;day2&#39;</span><span class="p">,</span> <span class="s1">&#39;day3&#39;</span><span class="p">,</span> <span class="s1">&#39;day4&#39;</span> <span class="p">])</span>
+<span class="n">df_toy</span><span class="p">[</span><span class="s1">&#39;shift_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_toy</span><span class="o">.</span><span class="n">Initial</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_toy</span><span class="p">[</span><span class="s1">&#39;shift_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_toy</span><span class="o">.</span><span class="n">Initial</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">df_toy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Initial</th>
+      <th>shift_1</th>
+      <th>shift_2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>day1</th>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>day2</th>
+      <td>2</td>
+      <td>1.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>day3</th>
+      <td>3</td>
+      <td>2.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>day4</th>
+      <td>4</td>
+      <td>3.0</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Now we will use the shift() method to calculate the log returns.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_log</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="o">/</span><span class="n">df</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">df_log</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_log</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Apple</th>
+      <th>Tesla</th>
+      <th>Amazon</th>
+      <th>Visa</th>
+      <th>Microsoft</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-05</th>
+      <td>-0.029</td>
+      <td>-0.043</td>
+      <td>-0.021</td>
+      <td>-0.022</td>
+      <td>-0.009</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>0.000</td>
+      <td>0.006</td>
+      <td>-0.023</td>
+      <td>-0.006</td>
+      <td>-0.015</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>0.014</td>
+      <td>-0.002</td>
+      <td>0.011</td>
+      <td>0.013</td>
+      <td>0.013</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>0.038</td>
+      <td>-0.002</td>
+      <td>0.007</td>
+      <td>0.013</td>
+      <td>0.029</td>
+    </tr>
+    <tr>
+      <th>2015-01-09</th>
+      <td>0.001</td>
+      <td>-0.019</td>
+      <td>-0.012</td>
+      <td>-0.015</td>
+      <td>-0.008</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>The base of np.log() is Euler’s number <span class="math notranslate nohighlight">\(e\)</span>, which is a mathematical constant similar to <span class="math notranslate nohighlight">\(\pi\)</span> and approximately equal to 2.718.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.302585092994046
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">e</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.718281828459045
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="percentage-change">
+<h2>Percentage Change<a class="headerlink" href="#percentage-change" title="Permalink to this heading">#</a></h2>
+<p>If you prefer to use percentage changes instead of log returns, you can use the pandas pct_change() method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pct</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+<span class="n">df_pct</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_pct</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Apple</th>
+      <th>Tesla</th>
+      <th>Amazon</th>
+      <th>Visa</th>
+      <th>Microsoft</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-05</th>
+      <td>-0.028</td>
+      <td>-0.042</td>
+      <td>-0.021</td>
+      <td>-0.022</td>
+      <td>-0.009</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>0.000</td>
+      <td>0.006</td>
+      <td>-0.023</td>
+      <td>-0.006</td>
+      <td>-0.015</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>0.014</td>
+      <td>-0.002</td>
+      <td>0.011</td>
+      <td>0.013</td>
+      <td>0.013</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>0.038</td>
+      <td>-0.002</td>
+      <td>0.007</td>
+      <td>0.013</td>
+      <td>0.029</td>
+    </tr>
+    <tr>
+      <th>2015-01-09</th>
+      <td>0.001</td>
+      <td>-0.019</td>
+      <td>-0.012</td>
+      <td>-0.015</td>
+      <td>-0.008</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="lagged-data">
+<h2>Lagged Data<a class="headerlink" href="#lagged-data" title="Permalink to this heading">#</a></h2>
+<p>One way to predict future stock prices is by using a certain number of previous stock prices. To do this, we will prepare a DataFrame that consists of the closing values along with their lagged versions up to a certain window period.</p>
+<ul class="simple">
+<li><p>The following function generates lagged values as new columns.</p>
+<ul>
+<li><p>The parameter data is the DataFrame that contains values for various stocks.</p></li>
+<li><p>The parameter name specifies the column name (the stock for which lagged data will be generated as a new DataFrame).</p></li>
+<li><p>The parameter lag defines the number of lags, up to which lagged data will be generated as new columns.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lag_func</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lag</span><span class="p">):</span>
+    <span class="n">df_lag</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">lag</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">df_lag</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;lag_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_lag</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">df_lag</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df_lag</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_log</span><span class="o">.</span><span class="n">Visa</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date
+2015-01-05   -0.022321
+2015-01-06   -0.006464
+2015-01-07    0.013309
+2015-01-08    0.013323
+2015-01-09   -0.014934
+2015-01-12   -0.001959
+2015-01-13    0.002918
+2015-01-14   -0.020220
+2015-01-15   -0.009554
+2015-01-16    0.007164
+Name: Visa, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_func</span><span class="p">(</span><span class="n">df_log</span><span class="p">,</span> <span class="s1">&#39;Visa&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Visa</th>
+      <th>lag_1</th>
+      <th>lag_2</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-08</th>
+      <td>0.013323</td>
+      <td>0.013309</td>
+      <td>-0.006464</td>
+    </tr>
+    <tr>
+      <th>2015-01-09</th>
+      <td>-0.014934</td>
+      <td>0.013323</td>
+      <td>0.013309</td>
+    </tr>
+    <tr>
+      <th>2015-01-12</th>
+      <td>-0.001959</td>
+      <td>-0.014934</td>
+      <td>0.013323</td>
+    </tr>
+    <tr>
+      <th>2015-01-13</th>
+      <td>0.002918</td>
+      <td>-0.001959</td>
+      <td>-0.014934</td>
+    </tr>
+    <tr>
+      <th>2015-01-14</th>
+      <td>-0.020220</td>
+      <td>0.002918</td>
+      <td>-0.001959</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>We can generate a dictionary with stock names as keys and DataFrames (containing the closing values and their lagged versions) as the corresponding values, allowing us to keep all the data in a single dictionary.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">STOCK_DICT</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+  <span class="n">df_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">lag_func</span><span class="p">(</span><span class="n">df_log</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;Apple&#39;, &#39;Tesla&#39;, &#39;Amazon&#39;, &#39;Visa&#39;, &#39;Microsoft&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dict</span><span class="p">[</span><span class="s1">&#39;Visa&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Visa</th>
+      <th>lag_1</th>
+      <th>lag_2</th>
+      <th>lag_3</th>
+      <th>lag_4</th>
+      <th>lag_5</th>
+      <th>lag_6</th>
+      <th>lag_7</th>
+      <th>lag_8</th>
+      <th>lag_9</th>
+      <th>lag_10</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-03-25</th>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+      <td>-0.017022</td>
+      <td>0.018079</td>
+      <td>-0.001698</td>
+    </tr>
+    <tr>
+      <th>2015-03-26</th>
+      <td>-0.002132</td>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+      <td>-0.017022</td>
+      <td>0.018079</td>
+    </tr>
+    <tr>
+      <th>2015-03-27</th>
+      <td>-0.000763</td>
+      <td>-0.002132</td>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+      <td>-0.017022</td>
+    </tr>
+    <tr>
+      <th>2015-03-30</th>
+      <td>0.001830</td>
+      <td>-0.000763</td>
+      <td>-0.002132</td>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+    </tr>
+    <tr>
+      <th>2015-03-31</th>
+      <td>-0.003815</td>
+      <td>0.001830</td>
+      <td>-0.000763</td>
+      <td>-0.002132</td>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="input-and-output-data">
+<h2>Input and Output Data<a class="headerlink" href="#input-and-output-data" title="Permalink to this heading">#</a></h2>
+<p>In this section, we will prepare the input and output data that will be used to build the Machine Learning models for a single stock (Visa). You can apply the same process to multiple stocks together by using a for loop.</p>
+<section id="input">
+<h3>Input<a class="headerlink" href="#input" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The input data consists of lagged values, which represent past prices, and the output data consists of the closing values — the column labeled with the name of the stock.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_visa</span> <span class="o">=</span> <span class="n">df_dict</span><span class="p">[</span><span class="s1">&#39;Visa&#39;</span><span class="p">]</span>
+<span class="n">df_visa</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Visa</th>
+      <th>lag_1</th>
+      <th>lag_2</th>
+      <th>lag_3</th>
+      <th>lag_4</th>
+      <th>lag_5</th>
+      <th>lag_6</th>
+      <th>lag_7</th>
+      <th>lag_8</th>
+      <th>lag_9</th>
+      <th>lag_10</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-03-25</th>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+      <td>-0.017022</td>
+      <td>0.018079</td>
+      <td>-0.001698</td>
+    </tr>
+    <tr>
+      <th>2015-03-26</th>
+      <td>-0.002132</td>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+      <td>-0.017022</td>
+      <td>0.018079</td>
+    </tr>
+    <tr>
+      <th>2015-03-27</th>
+      <td>-0.000763</td>
+      <td>-0.002132</td>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+      <td>-0.017022</td>
+    </tr>
+    <tr>
+      <th>2015-03-30</th>
+      <td>0.001830</td>
+      <td>-0.000763</td>
+      <td>-0.002132</td>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+    </tr>
+    <tr>
+      <th>2015-03-31</th>
+      <td>-0.003815</td>
+      <td>0.001830</td>
+      <td>-0.000763</td>
+      <td>-0.002132</td>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>iloc[:, 1:] selects all rows and all columns starting from index 1 (the second column), which in this case is the lag_1 column.</p></li>
+<li><p>This provides all the lagged values, representing the past stock prices, and will be used as the input data.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_visa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lag_1</th>
+      <th>lag_2</th>
+      <th>lag_3</th>
+      <th>lag_4</th>
+      <th>lag_5</th>
+      <th>lag_6</th>
+      <th>lag_7</th>
+      <th>lag_8</th>
+      <th>lag_9</th>
+      <th>lag_10</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-03-25</th>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+      <td>-0.017022</td>
+      <td>0.018079</td>
+      <td>-0.001698</td>
+    </tr>
+    <tr>
+      <th>2015-03-26</th>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+      <td>-0.017022</td>
+      <td>0.018079</td>
+    </tr>
+    <tr>
+      <th>2015-03-27</th>
+      <td>-0.002132</td>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+      <td>-0.017022</td>
+    </tr>
+    <tr>
+      <th>2015-03-30</th>
+      <td>-0.000763</td>
+      <td>-0.002132</td>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+      <td>0.014943</td>
+    </tr>
+    <tr>
+      <th>2015-03-31</th>
+      <td>0.001830</td>
+      <td>-0.000763</td>
+      <td>-0.002132</td>
+      <td>-0.020628</td>
+      <td>0.000298</td>
+      <td>-0.004907</td>
+      <td>0.008941</td>
+      <td>-0.001608</td>
+      <td>0.011914</td>
+      <td>-0.016944</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The values attribute removes the labels (row and column indices) and returns the underlying data as a NumPy array, similar to a matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_visa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(numpy.ndarray, (1454, 10))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="output">
+<h3>Output<a class="headerlink" href="#output" title="Permalink to this heading">#</a></h3>
+<p>Output data in Machine Learning can generally take two different forms: continuous or categorical.</p>
+<ul class="simple">
+<li><p>Continuous data means that output values can take any value within a range, such as a price, a percentage change, or a log return. These values are numerical and can be measured on a continuous scale.</p></li>
+<li><p>Categorical data, on the other hand, represents discrete classes or labels, such as increasing vs. decreasing, or buy, hold, sell. These values do not represent magnitudes but categories.</p></li>
+<li><p>When the output data is continuous, we use regressor algorithms, and the task is called regression. When the output data is categorical, we use classifier algorithms, and the task is called classification.</p></li>
+<li><p>Therefore, it is essential to clearly identify the type of output data before building a model, so that we can choose the most appropriate Machine Learning algorithm depending on whether the task is regression or classification.</p></li>
+</ul>
+<section id="regression">
+<h4>Regression<a class="headerlink" href="#regression" title="Permalink to this heading">#</a></h4>
+<p>Log return values are continuous data. Therefore, if the output variable in a model is log returns, the output is continuous, and regression algorithms should be used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yR</span> <span class="o">=</span> <span class="n">df_visa</span><span class="p">[</span><span class="s1">&#39;Visa&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">yR</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1454,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yR</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.02062842, -0.00213224, -0.00076259,  0.00182978, -0.0038152 ])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="classification">
+<h4>Classification<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h4>
+<p>If we want to perform classification and predict the behavior of the stock price, whether it increases or decreases, we need to convert the output data into labels (increasing and decreasing). We will encode these two labels numerically as 0 (decreasing or flat) and 1 (increasing).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">yR</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">yC</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 0, ..., 1, 1, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>NumPy’s bincount() method counts the number of occurrences of each non-negative integer in an array. For example, if the output array contains only 0s and 1s, np.bincount() will return the count of 0s as the first element and the count of 1s as the second element.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example</span>
+<span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 3, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The number of 0s and 1s in yC.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">yC</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([642, 812])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>You can also use the Counter() class from the collections module to count the number of occurrences of 0 and 1.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+<span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">yC</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({1: 812, 0: 642})
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="split-data">
+<h3>Split Data<a class="headerlink" href="#split-data" title="Permalink to this heading">#</a></h3>
+<p>In the following code, we will split the entire dataset into three different subsets:</p>
+<ul class="simple">
+<li><p>Training Data (90%): This portion of the data is used to train and build the Machine Learning models.</p></li>
+<li><p>Validation Data (5%): Defined by valid_ratio, this subset is used to evaluate and compare different models that were built using the training data. It helps in selecting the best-performing model and tuning hyperparameters.</p></li>
+<li><p>Test Data (5%): The remaining portion of the data is used to assess the performance of the final model chosen based on validation results. This set is never used during training or model selection, only for the final performance check.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_visa</span><span class="p">)</span> <span class="c1"># total number of rows</span>
+
+<span class="n">tr</span> <span class="o">=</span> <span class="mf">0.90</span> <span class="c1"># train ratio</span>
+<span class="n">vr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">train_ratio</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># validation ratio</span>
+
+<span class="n">ts</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">tr</span><span class="p">)</span> <span class="c1"># training size</span>
+<span class="n">vs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">vr</span><span class="p">)</span> <span class="c1"># validation size</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">yR_train</span><span class="p">,</span> <span class="n">yC_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">ts</span><span class="p">],</span> <span class="n">yR</span><span class="p">[:</span><span class="n">ts</span><span class="p">],</span> <span class="n">yC</span><span class="p">[:</span><span class="n">ts</span><span class="p">]</span>
+<span class="n">X_valid</span><span class="p">,</span> <span class="n">yR_valid</span><span class="p">,</span> <span class="n">yC_valid</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">ts</span><span class="p">:</span><span class="n">ts</span><span class="o">+</span><span class="n">vs</span><span class="p">],</span> <span class="n">yR</span><span class="p">[</span><span class="n">ts</span><span class="p">:</span><span class="n">ts</span><span class="o">+</span><span class="n">vs</span><span class="p">],</span> <span class="n">yC</span><span class="p">[</span><span class="n">ts</span><span class="p">:</span><span class="n">ts</span><span class="o">+</span><span class="n">vs</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="p">,</span> <span class="n">yR_test</span> <span class="p">,</span> <span class="n">yC_test</span>  <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">ts</span><span class="o">+</span><span class="n">vs</span><span class="p">:],</span> <span class="n">yR</span><span class="p">[</span><span class="n">ts</span><span class="o">+</span><span class="n">vs</span><span class="p">:],</span> <span class="n">yC</span><span class="p">[</span><span class="n">ts</span><span class="o">+</span><span class="n">vs</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">yR_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">yC_train</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((1308, 10), (1308,), (1308,))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">yR_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">yC_valid</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((72, 10), (72,), (72,))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">yR_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">yC_test</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((74, 10), (74,), (74,))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="machine-learning">
+<h1>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this heading">#</a></h1>
+<p>In this section, we will use different Machine Learning algorithms to make predictions and evaluate their performance on the validation set for comparison.</p>
+<p>For the models that we import from scikit-learn, including K-Nearest Neighbors (KNN), Decision Tree, Random Forest, and Multi-layer Perceptron (MLP) , the fit() method performs the training step by using the input and output data from the training dataset.</p>
+<ul class="simple">
+<li><p>Once trained, the predict() method generates predictions for the given input values.</p></li>
+<li><p>For regression models, we use the Root Mean Squared Error (RMSE) to measure the difference between the predicted values and the actual values.</p></li>
+<li><p>For classification models, the score() method combines the prediction step and evaluation, returning the accuracy score, which is the proportion of correctly classified samples (in this case, trading days).</p></li>
+</ul>
+<p>This approach allows us to fairly compare different models by using the appropriate evaluation metric for the type of problem (regression or classification).</p>
+<p>For more information on Machine Learning algorithms, please check the following online book:
+<a class="reference external" href="https://datasmp.github.io/intro_ml/intro_ml.html">Introduction to Machine Learning</a>.</p>
+<section id="knn">
+<h2>KNN<a class="headerlink" href="#knn" title="Permalink to this heading">#</a></h2>
+<p>For more information on KNN, please see <a class="reference external" href="https://datasmp.github.io/intro_ml/knn.html">KNN chapter</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span><span class="p">,</span> <span class="n">KNeighborsRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">root_mean_squared_error</span> <span class="k">as</span> <span class="n">rmse</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knnR</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">()</span>
+<span class="n">knnR</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">yR_train</span><span class="p">)</span>
+<span class="n">pred_valid</span> <span class="o">=</span> <span class="n">knnR</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="p">)</span>
+<span class="n">rmse</span><span class="p">(</span><span class="n">pred_valid</span><span class="p">,</span> <span class="n">yR_valid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01686889097515809
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knnC</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+<span class="n">knnC</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">yC_train</span><span class="p">)</span>
+<span class="n">knnC</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">yC_valid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5277777777777778
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="decision-tree">
+<h2>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this heading">#</a></h2>
+<p>For more information on Decision Tree, please see <a class="reference external" href="https://datasmp.github.io/intro_ml/decision_tree.html">Decision Tree chapter</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">DecisionTreeRegressor</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dtR</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dtR</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">yR_train</span><span class="p">)</span>
+<span class="n">pred_valid</span> <span class="o">=</span> <span class="n">dtR</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="p">)</span>
+<span class="n">rmse</span><span class="p">(</span><span class="n">pred_valid</span><span class="p">,</span> <span class="n">yR_valid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.023515643972095466
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dtC</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">dtC</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">yC_train</span><span class="p">)</span>
+<span class="n">dtC</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">yC_valid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5416666666666666
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="random-forest">
+<h2>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h2>
+<p>For more information on Random Forest, please see <a class="reference external" href="https://datasmp.github.io/intro_ml/random_forest.html">Random Forest chapter</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span><span class="p">,</span> <span class="n">RandomForestRegressor</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfR</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">rfR</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">yR_train</span><span class="p">)</span>
+<span class="n">pred_valid</span> <span class="o">=</span> <span class="n">rfR</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="p">)</span>
+<span class="n">rmse</span><span class="p">(</span><span class="n">pred_valid</span><span class="p">,</span> <span class="n">yR_valid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.017484014073654453
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfC</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">rfC</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">yC_train</span><span class="p">)</span>
+<span class="n">rfC</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">yC_valid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5416666666666666
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mlp">
+<h2>MLP<a class="headerlink" href="#mlp" title="Permalink to this heading">#</a></h2>
+<p>For more information on Multi-layer Perceptron, please see <a class="reference external" href="https://datasmp.github.io/intro_ml/neural_networks.html#sklearn-mlp-classifier">MLP chapter</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span><span class="p">,</span> <span class="n">MLPRegressor</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlpR</span> <span class="o">=</span> <span class="n">MLPRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">mlpR</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">yR_train</span><span class="p">)</span>
+<span class="n">pred_valid</span> <span class="o">=</span> <span class="n">mlpR</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="p">)</span>
+<span class="n">rmse</span><span class="p">(</span><span class="n">pred_valid</span><span class="p">,</span> <span class="n">yR_valid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.015456051693813764
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlpC</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">mlpC</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">yC_train</span><span class="p">)</span>
+<span class="n">mlpC</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">yC_valid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7083333333333334
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="test-data">
+<h2>Test Data<a class="headerlink" href="#test-data" title="Permalink to this heading">#</a></h2>
+<p>Among the models we’ve evaluated so far, the MLP shows the best performance on the validation data. Now, let’s check the performance of this best model (MLP) on the test set. Since we will no longer use the separate training and validation sets, let’s retrain the MLP on the combined training+validation data and then evaluate it on the test data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_valid</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((1308, 10), (72, 10))
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>NumPy’s vstack() method stacks arrays vertically, meaning it places one array below the other.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">])</span>
+<span class="n">X_train_valid</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1380, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yR_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">yR_valid</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((1308,), (72,))
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>NumPy’s hstack() method stacks arrays horizontally, meaning it places one array to the right of the other.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yR_train_valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">yR_train</span><span class="p">,</span> <span class="n">yR_valid</span><span class="p">])</span>
+<span class="n">yR_train_valid</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1380,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yC_train_valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">yC_train</span><span class="p">,</span> <span class="n">yC_valid</span><span class="p">])</span>
+<span class="n">yC_train_valid</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1380,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlpR</span> <span class="o">=</span> <span class="n">MLPRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">mlpR</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_valid</span><span class="p">,</span> <span class="n">yR_train_valid</span><span class="p">)</span>
+<span class="n">pred_test</span> <span class="o">=</span> <span class="n">mlpR</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">rmse</span><span class="p">(</span><span class="n">pred_test</span><span class="p">,</span> <span class="n">yR_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.016404914243523118
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlpC</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">mlpC</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_valid</span><span class="p">,</span> <span class="n">yC_train_valid</span><span class="p">)</span>
+<span class="n">mlpC</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">yC_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5540540540540541
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="keras">
+<h2>Keras<a class="headerlink" href="#keras" title="Permalink to this heading">#</a></h2>
+<p>Keras is a high-level neural network library that runs on top of Theano or TensorFlow, offering a user-friendly API similar to scikit-learn for constructing neural networks in Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h3>Regression<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>The following model consists of an input layer with 10 neurons, two hidden layers with 100 and 200 neurons respectively, and an output layer with one neuron.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">((</span><span class="mi">10</span><span class="p">,)),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential_9"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ dense_27 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">100</span>)            │         <span style="color: #00af00; text-decoration-color: #00af00">1,100</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_28 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">200</span>)            │        <span style="color: #00af00; text-decoration-color: #00af00">20,200</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_29 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)              │           <span style="color: #00af00; text-decoration-color: #00af00">201</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">21,501</span> (83.99 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">21,501</span> (83.99 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
+</div>
+<p>In Keras, the compile() step is where you configure the model for training.</p>
+<ul class="simple">
+<li><p>The optimizer, metrics, and loss function can all be specified.</p></li>
+</ul>
+<p>In the following code, we set only the loss function to mean squared error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span> <span class="o">=</span> <span class="s1">&#39;mse&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For scikit-learn algorithms, the fit() method is used to train the model. Typically, the model is trained only on the training set, while the validation set is kept separate and not used directly during fitting.</p>
+<ul class="simple">
+<li><p>The validation set plays a key role in the training process:</p></li>
+<li><p>It is used to evaluate the model’s performance on unseen data while the training is still in progress.</p></li>
+<li><p>It helps detect overfitting, since performance on training data may improve even while performance on validation data deteriorates.</p></li>
+<li><p>It is commonly used for hyperparameter tuning, either manually or through techniques like GridSearchCV or RandomizedSearchCV, where cross-validation splits serve as validation sets.</p></li>
+</ul>
+<p>In contrast, frameworks like Keras allow you to pass a validation set directly in the fit() method (e.g., validation_data=(x_val, y_val)), so that performance on the validation set is reported at the end of each training epoch.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">yR_train</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">yR_valid</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">41/41</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - loss: 2.5526e-04 - val_loss: 2.7879e-04
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.00121496],
+       [-0.00020361],
+       [-0.00067773],
+       [ 0.0009219 ],
+       [ 0.00194272]], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yR_test_predict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">rmse</span><span class="p">(</span><span class="n">yR_test_predict</span> <span class="p">,</span> <span class="n">yR_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">3/3</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 976us/step
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.016397975497796584
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Classification<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="sigmoid">
+<h4>Sigmoid<a class="headerlink" href="#sigmoid" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">((</span><span class="mi">10</span><span class="p">,)),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">)])</span> <span class="c1"># binary case: only two classes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential_7"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ dense_21 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">100</span>)            │         <span style="color: #00af00; text-decoration-color: #00af00">1,100</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_22 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">200</span>)            │        <span style="color: #00af00; text-decoration-color: #00af00">20,200</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_23 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1</span>)              │           <span style="color: #00af00; text-decoration-color: #00af00">201</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">21,501</span> (83.99 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">21,501</span> (83.99 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">yC_train</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">yC_valid</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">41/41</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 2ms/step - accuracy: 0.5386 - loss: 0.6911 - val_accuracy: 0.5972 - val_loss: 0.6898
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 27ms/step
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.55796814],
+       [0.5584805 ],
+       [0.5597468 ],
+       [0.55970466],
+       [0.56186867]], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yC_test_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">&gt;</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">yC_test_pred</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">3/3</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step 
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1],
+       [1],
+       [1],
+       [1],
+       [1]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="softmax">
+<h4>Softmax<a class="headerlink" href="#softmax" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">((</span><span class="mi">10</span><span class="p">,)),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)])</span> <span class="c1"># binary case: only two classes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential_8"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ dense_24 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">100</span>)            │         <span style="color: #00af00; text-decoration-color: #00af00">1,100</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_25 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">200</span>)            │        <span style="color: #00af00; text-decoration-color: #00af00">20,200</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_26 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">2</span>)              │           <span style="color: #00af00; text-decoration-color: #00af00">402</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">21,702</span> (84.77 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">21,702</span> (84.77 KB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">yC_train</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">yC_valid</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">41/41</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 1ms/step - accuracy: 0.5283 - loss: 0.6912 - val_accuracy: 0.5972 - val_loss: 0.6914
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">1/1</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 26ms/step
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.43344268, 0.56655735],
+       [0.4247901 , 0.5752099 ],
+       [0.42437348, 0.57562655],
+       [0.42359856, 0.5764014 ],
+       [0.4213894 , 0.57861066]], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yC_test_pred</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)]</span>
+<span class="n">yC_test_pred</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">3/3</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">0s</span> 874us/step
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 1, 1, 1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="proj2_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Project-2: Novel Factors</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="proj2_rs1_technical_ind.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Question-1: Technical Indicators</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Coding</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-return">Log Return</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#percentage-change">Percentage Change</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lagged-data">Lagged Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-and-output-data">Input and Output Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input">Input</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-data">Split Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">KNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlp">MLP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-data">Test Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keras">Keras</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid">Sigmoid</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax">Softmax</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yusuf Danisman
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
