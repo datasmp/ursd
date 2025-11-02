@@ -62,11 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'proj2_rs1_technical_ind';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Question-2: Genetic Algorithms" href="proj2_rs2_genetic_alg.html" />
-    <link rel="prev" title="Project-2: Novel Factors" href="proj2_intro.html" />
+    <link rel="prev" title="Coding" href="proj2_coding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,8 +191,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="proj2_intro.html">Project-2: Novel Factors</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="proj2_coding.html">Coding</a></li>
+
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Question-1: Technical Indicators</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="proj2_rs2_genetic_alg.html">Question-2: Genetic Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs3_sp500.html">Question-3: SP500</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proj2_rs4_classical.html">Question-4: Classical ML</a></li>
 </ul>
 </li>
 </ul>
@@ -339,9 +347,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Question-1: Technical Indicators</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#title">Title</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-indicators">Technical Indicators</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-average">Moving Average</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-moving-average">Exponential Moving Average</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-average-convergence-divergence">Moving Average Convergence Divergence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-strength-index">Relative Strength Index</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -364,6 +383,1208 @@ document.write(`
 <p>Technical indicators are widely used by investors to conduct technical analysis, interpret stock price behavior, and identify potential patterns in financial data. They are often employed to determine optimal entry and exit points for trades. Beyond their role in trading strategies, technical indicators can also serve as input features for machine learning models aimed at predicting future stock prices and market direction.</p>
 <p>In Alzaman, the author utilized only four indicators, Moving Average (MA), Exponential Moving Average (EMA), Moving Average Convergence Divergence (MACD), and Relative Strength Index (RSI). However, the literature includes a wide range of additional indicators, such as Percentage Price Oscillator (PPO), Stochastic Oscillator, Standard Deviation, On-Balance Volume (OBV), and Williams %R, which may also be leveraged as features.</p>
 <p>This project will incorporate multiple sets of technical indicators as input features and evaluate their impact on the predictive performance of LSTM models, building upon the framework presented in Alzaman. By systematically comparing different combinations of indicators, the study aims to assess their effectiveness and contribution to improving model accuracy and reliability in stock price forecasting.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="technical-indicators">
+<h1>Technical Indicators<a class="headerlink" href="#technical-indicators" title="Permalink to this heading">#</a></h1>
+<p>A <em>technical indicator</em> for stocks is a mathematical calculation based on price, volume, or open interest of a security, used to analyze and predict future price movements. Traders and analysts use these indicators to identify trends, measure momentum, detect volatility, and generate buy or sell signals. Technical indicators are a central part of technical analysis, which focuses on market behavior rather than intrinsic value.</p>
+<p>A <em>non-technical indicator</em> in the stock market is any factor that affects prices but does not come from past price or volume data. Instead, it is based on real-world conditions. For example, unemployment rates and inflation data show the health of the economy, while Federal Reserve interest rate decisions directly influence borrowing costs and investor confidence. These indicators help explain stock movements beyond what charts and technical analysis can show.</p>
+<section id="moving-average">
+<h2>Moving Average<a class="headerlink" href="#moving-average" title="Permalink to this heading">#</a></h2>
+<p>A moving average is a statistical method used to calculate the mean of a specified number of consecutive observations on a rolling basis. In this approach, the average is computed for each successive group of values, with the window shifting forward by one observation at a time. This technique is widely applied in fields such as economics, finance, and healthcare for smoothing data and identifying underlying trends.</p>
+<p>Window Length: In financial markets, the most common window lengths are 50-day and 200-day moving averages, which are widely used by analysts and traders to identify medium- and long-term trends in stock prices.</p>
+<p><strong>Advantages of using a moving average include:</strong></p>
+<ul class="simple">
+<li><p>Noise reduction: Noise refers to random, short-term fluctuations or irregular variations in data that do not represent meaningful information. By smoothing these variations, a moving average makes underlying patterns more visible.</p></li>
+<li><p>Trend identification: It highlights long-term directional movements in data.</p></li>
+<li><p>Simplicity: It is computationally straightforward and easy to interpret.</p></li>
+</ul>
+<p><strong>Disadvantages of using a moving average include:</strong></p>
+<ul class="simple">
+<li><p>Moving averages are based on past data, so they react slowly to sudden changes or new trends.</p></li>
+<li><p>Important short-term variations may be smoothed out along with noise, causing significant information to be lost.</p></li>
+<li><p>The choice of window length can significantly affect the results; too short a window may not reduce noise effectively, while too long a window may over-smooth the data.</p></li>
+</ul>
+<p><strong>Example:</strong> In hospitals, new patient admissions that occur during weekends are often recorded and reported on Mondays. As a result, the number of new patients reported on Mondays appears unusually high, even though it does not reflect actual daily variation. By applying a moving average, these irregular spikes are smoothed, providing a more accurate representation of patient inflow over time.</p>
+<p><strong>Comparison of Short and Long MA</strong></p>
+<p>Let’s compare the moving averages with window lengths of 20 and 200 for Apple stock closing values.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span> 
+<span class="n">START</span><span class="p">,</span> <span class="n">END</span> <span class="o">=</span> <span class="s1">&#39;2015-1-1&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-12-31&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="s1">&#39;AAPL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">START</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">END</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If the code above does not work due to a YFRateLimitError, you can load the data from the following URL using the pandas read_csv() method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/datasmp/datasets/refs/heads/main/apple_stock_data_raw.csv&#39;</span><span class="p">,</span>
+                <span class="n">parse_dates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">],</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+      <th>Dividends</th>
+      <th>Stock Splits</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02 05:00:00+00:00</th>
+      <td>24.718174</td>
+      <td>24.729270</td>
+      <td>23.821672</td>
+      <td>24.261047</td>
+      <td>212818400</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-05 05:00:00+00:00</th>
+      <td>24.030267</td>
+      <td>24.110154</td>
+      <td>23.391177</td>
+      <td>23.577578</td>
+      <td>257142000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-06 05:00:00+00:00</th>
+      <td>23.641929</td>
+      <td>23.839426</td>
+      <td>23.218087</td>
+      <td>23.579796</td>
+      <td>263188400</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-07 05:00:00+00:00</th>
+      <td>23.788380</td>
+      <td>24.010286</td>
+      <td>23.677426</td>
+      <td>23.910429</td>
+      <td>160423600</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-08 05:00:00+00:00</th>
+      <td>24.238858</td>
+      <td>24.886824</td>
+      <td>24.121246</td>
+      <td>24.829128</td>
+      <td>237458000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+      <th>Dividends</th>
+      <th>Stock Splits</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.72</td>
+      <td>24.73</td>
+      <td>23.82</td>
+      <td>24.26</td>
+      <td>212818400</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>24.03</td>
+      <td>24.11</td>
+      <td>23.39</td>
+      <td>23.58</td>
+      <td>257142000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.64</td>
+      <td>23.84</td>
+      <td>23.22</td>
+      <td>23.58</td>
+      <td>263188400</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.79</td>
+      <td>24.01</td>
+      <td>23.68</td>
+      <td>23.91</td>
+      <td>160423600</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.24</td>
+      <td>24.89</td>
+      <td>24.12</td>
+      <td>24.83</td>
+      <td>237458000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df_apple</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Close</span><span class="p">)</span>
+<span class="n">df_apple</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.261047</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>23.577578</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.579796</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.910429</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.829128</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_apple</span><span class="p">[</span><span class="s1">&#39;MA-2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apple</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df_apple</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+      <th>MA-2</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.261047</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>23.577578</td>
+      <td>23.919312</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.579796</td>
+      <td>23.578687</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.910429</td>
+      <td>23.745112</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.829128</td>
+      <td>24.369779</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_apple</span><span class="p">[</span><span class="s1">&#39;MA-3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apple</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df_apple</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+      <th>MA-2</th>
+      <th>MA-3</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.261047</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>23.577578</td>
+      <td>23.919312</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.579796</td>
+      <td>23.578687</td>
+      <td>23.806140</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.910429</td>
+      <td>23.745112</td>
+      <td>23.689267</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.829128</td>
+      <td>24.369779</td>
+      <td>24.106451</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_apple</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[:</span><span class="n">N</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MA-20&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_apple</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[:</span><span class="n">N</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MA-200&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_apple</span><span class="o">.</span><span class="n">Close</span><span class="p">[:</span><span class="n">N</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Actual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8c93b4b17407415794bcf3927b9b79f72027a0dcd58cc462190cf26f177a9b70.png" src="_images/8c93b4b17407415794bcf3927b9b79f72027a0dcd58cc462190cf26f177a9b70.png" />
+</div>
+</div>
+</section>
+<section id="exponential-moving-average">
+<h2>Exponential Moving Average<a class="headerlink" href="#exponential-moving-average" title="Permalink to this heading">#</a></h2>
+<p>In this type of moving average, the effect of the recent values is greater than that of the older values. This is done by assigning weights to each day; these weights are multiplied by the corresponding stock prices and divided by the sum of all weights.
+For the values 100,120,170, the ordinary average is <span class="math notranslate nohighlight">\(\frac{100+120+170}{3}=130\)</span>
+If we use the weights 2,3,5, then: <span class="math notranslate nohighlight">\(\frac{100\times 2+ 120\times 3 + 170\times 5}{2+3+5} = \frac{1410}{10}=141\)</span></p>
+<p>Since the weight for the most recent value (170) is larger, its effect is greater, and the exponential moving average is larger than the regular moving average.</p>
+<p>As a simple example, consider the stock prices in order: 100,110,90,105,95. If the period is chosen as 3 and the weights are 2,3,5, then for each 3 consecutive values the weighted moving average is computed as follows:</p>
+<p><span class="math notranslate nohighlight">\(\displaystyle \frac{100\times 2+ 110\times 3 + 90\times 5}{2+3+5} = \frac{980}{10}=98\)</span></p>
+<p><span class="math notranslate nohighlight">\(\displaystyle \frac{110\times 2+ 90\times 3 + 105\times 5}{2+3+5} = \frac{1015}{10}=101.5\)</span></p>
+<p><span class="math notranslate nohighlight">\(\displaystyle \frac{90\times 2+ 105\times 3 + 95\times 5}{2+3+5} = \frac{970}{10}=97\)</span></p>
+<p>In a pandas DataFrame, the ewm() method is used to calculate the exponential moving average. ewm stands for exponentially weighted moving average. For this function there is no fixed window size.</p>
+<p>If the adjust parameter of the ewm() method is set to True, to calculate the exponentially weighted value at time step <span class="math notranslate nohighlight">\(y_t\)</span>, all previous time step values <span class="math notranslate nohighlight">\([x_0, x_1, ...,x_t]\)</span> are used as follows:</p>
+<p><span class="math notranslate nohighlight">\(\displaystyle y_t = \frac{x_t+(1-\alpha)x_{t-1}+(1-\alpha)^2x_{t-2}+...+(1-\alpha)^tx_{o}}{1+(1-\alpha)+(1-\alpha)^2+...+(1-\alpha)^{t-1}}\)</span></p>
+<p>Thw weights are <span class="math notranslate nohighlight">\(1, (1-\alpha), (1-\alpha)^2, ..., (1-\alpha)^{t-1}\)</span> where <span class="math notranslate nohighlight">\(\alpha\)</span> is the smoothing factor between 0 and 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_apple2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_apple</span><span class="o">.</span><span class="n">Close</span><span class="p">)</span>
+<span class="n">df_apple2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.261047</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>23.577578</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.579796</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.910429</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.829128</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>As <span class="math notranslate nohighlight">\(\alpha\)</span> gets closer to 1, the ewm values get closer to the actual values. Therefore, large alpha values correspond to shorter exponential moving averages, whereas small alpha values correspond to longer moving averages.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_apple2</span><span class="p">[</span><span class="s1">&#39;EWM_0_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apple2</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">ewm</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df_apple2</span><span class="p">[</span><span class="s1">&#39;EWM_0_5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apple2</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">ewm</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df_apple2</span><span class="p">[</span><span class="s1">&#39;EWM_0_9&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apple2</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">ewm</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df_apple2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+      <th>EWM_0_1</th>
+      <th>EWM_0_5</th>
+      <th>EWM_0_9</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.26</td>
+      <td>24.26</td>
+      <td>24.26</td>
+      <td>24.26</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>23.58</td>
+      <td>23.86</td>
+      <td>23.81</td>
+      <td>23.64</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.58</td>
+      <td>23.73</td>
+      <td>23.68</td>
+      <td>23.59</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.91</td>
+      <td>23.80</td>
+      <td>23.80</td>
+      <td>23.88</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.83</td>
+      <td>24.17</td>
+      <td>24.33</td>
+      <td>24.73</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_apple2</span><span class="p">[</span><span class="s1">&#39;EWM_0_1&#39;</span><span class="p">][:</span><span class="n">N</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;EWM_0_1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_apple2</span><span class="p">[</span><span class="s1">&#39;EWM_0_5&#39;</span><span class="p">][:</span><span class="n">N</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;EWM_0_5&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_apple2</span><span class="p">[</span><span class="s1">&#39;EWM_0_9&#39;</span><span class="p">][:</span><span class="n">N</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;EWM_0_9&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_apple2</span><span class="o">.</span><span class="n">Close</span><span class="p">[:</span><span class="n">N</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Actual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b4c3423cfb75d359cc391b5a99fe59b4a095fc0073dd03e58bc284ef6c8ffec3.png" src="_images/b4c3423cfb75d359cc391b5a99fe59b4a095fc0073dd03e58bc284ef6c8ffec3.png" />
+</div>
+</div>
+</section>
+<section id="moving-average-convergence-divergence">
+<h2>Moving Average Convergence Divergence<a class="headerlink" href="#moving-average-convergence-divergence" title="Permalink to this heading">#</a></h2>
+<p>Moving Average Convergence Divergence (MACD) is the difference between the shorter  exponential moving average and the longer one.  It is common to choose 12 and 26 day EMA.  You can use the span parameter of the ewm() method to get larger and smaller alpha values.</p>
+<p><span class="math notranslate nohighlight">\(\alpha = \displaystyle \frac{2}{1+span}\)</span></p>
+<p>Large span –&gt; smaller <span class="math notranslate nohighlight">\(\alpha\)</span> –&gt; slower decay –&gt; EWM becomes smoother (longer-term average)</p>
+<p>Small span –&gt; larger  <span class="math notranslate nohighlight">\(\alpha\)</span> –&gt; fast   decay –&gt; EWM reacts more to recent data (short-term average)</p>
+<p>Let’s choose span values 12 and 26.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_apple3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_apple</span><span class="o">.</span><span class="n">Close</span><span class="p">)</span>
+<span class="n">df_apple3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.261047</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>23.577578</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.579796</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.910429</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.829128</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_apple3</span><span class="p">[</span><span class="s1">&#39;EWM_span_12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apple3</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">ewm</span><span class="p">(</span><span class="n">span</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df_apple3</span><span class="p">[</span><span class="s1">&#39;EWM_span_26&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apple3</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">ewm</span><span class="p">(</span><span class="n">span</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df_apple3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+      <th>EWM_span_12</th>
+      <th>EWM_span_26</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.26</td>
+      <td>24.26</td>
+      <td>24.26</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>23.58</td>
+      <td>23.89</td>
+      <td>23.91</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.58</td>
+      <td>23.77</td>
+      <td>23.79</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.91</td>
+      <td>23.81</td>
+      <td>23.82</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.83</td>
+      <td>24.09</td>
+      <td>24.06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_apple3</span><span class="p">[</span><span class="s1">&#39;EWM_span_12&#39;</span><span class="p">][:</span><span class="n">N</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;EWM_span_12&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_apple3</span><span class="p">[</span><span class="s1">&#39;EWM_span_26&#39;</span><span class="p">][:</span><span class="n">N</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;EWM_span_26&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_apple3</span><span class="o">.</span><span class="n">Close</span><span class="p">[:</span><span class="n">N</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Actual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/85cb9a21c653e916fd0a740829ecc230b153f8499bee90715226fdca414dc7f2.png" src="_images/85cb9a21c653e916fd0a740829ecc230b153f8499bee90715226fdca414dc7f2.png" />
+</div>
+</div>
+</section>
+<section id="relative-strength-index">
+<h2>Relative Strength Index<a class="headerlink" href="#relative-strength-index" title="Permalink to this heading">#</a></h2>
+<p>Relative Strength Index (RSI) measures how strongly a stock’s price has moved in recent periods. It helps identify whether a stock is overbought or oversold.  RSI value is between 0 and 100.</p>
+<p>RSI &gt; 70: Overbought
+RSI &lt; 30: Oversold</p>
+<p>Overbought means the price of the stock has increased too quickly or too much compared to its recent movement. This indicates unusually strong buying pressure, and a price correction (pullback) could happen soon.</p>
+<p>Oversold means the price of the stock has decreased too quickly or too much compared to its recent movement. This indicates unusually strong selling pressure, and a price correction (pullback) could happen soon.</p>
+<p><span class="math notranslate nohighlight">\(RSI = 100-\frac{100}{1+RS}\)</span> where <span class="math notranslate nohighlight">\(\displaystyle RS=\frac{Average\,\,gain\,\,over\,\,a\,\,period}{Average\,\,loss\,\,over\,\,a\,\,period}\)</span> is the Relative strength</p>
+<p>It is very common to choose a period of 14.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_apple4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_apple</span><span class="o">.</span><span class="n">Close</span><span class="p">)</span>
+<span class="n">df_apple4</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.261047</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>23.577578</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.579796</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.910429</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.829128</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_apple4</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
+<span class="n">df_apple4</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+      <th>diff</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.261047</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>23.577578</td>
+      <td>-0.683470</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.579796</td>
+      <td>0.002218</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.910429</td>
+      <td>0.330633</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.829128</td>
+      <td>0.918699</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;gain&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span><span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">,</span><span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_apple4</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+      <th>diff</th>
+      <th>gain</th>
+      <th>loss</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-02</th>
+      <td>24.261047</td>
+      <td>NaN</td>
+      <td>0.000000</td>
+      <td>-0.00000</td>
+    </tr>
+    <tr>
+      <th>2015-01-05</th>
+      <td>23.577578</td>
+      <td>-0.683470</td>
+      <td>0.000000</td>
+      <td>0.68347</td>
+    </tr>
+    <tr>
+      <th>2015-01-06</th>
+      <td>23.579796</td>
+      <td>0.002218</td>
+      <td>0.002218</td>
+      <td>-0.00000</td>
+    </tr>
+    <tr>
+      <th>2015-01-07</th>
+      <td>23.910429</td>
+      <td>0.330633</td>
+      <td>0.330633</td>
+      <td>-0.00000</td>
+    </tr>
+    <tr>
+      <th>2015-01-08</th>
+      <td>24.829128</td>
+      <td>0.918699</td>
+      <td>0.918699</td>
+      <td>-0.00000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;gain_average_14&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;gain&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;loss_average_14&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df_apple4</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+      <th>diff</th>
+      <th>gain</th>
+      <th>loss</th>
+      <th>gain_average_14</th>
+      <th>loss_average_14</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-16</th>
+      <td>23.519882</td>
+      <td>-0.184181</td>
+      <td>0.000000</td>
+      <td>0.184181</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-20</th>
+      <td>24.125687</td>
+      <td>0.605804</td>
+      <td>0.605804</td>
+      <td>-0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-21</th>
+      <td>24.309868</td>
+      <td>0.184181</td>
+      <td>0.184181</td>
+      <td>-0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-22</th>
+      <td>24.942297</td>
+      <td>0.632429</td>
+      <td>0.632429</td>
+      <td>-0.000000</td>
+      <td>0.208274</td>
+      <td>0.159613</td>
+    </tr>
+    <tr>
+      <th>2015-01-23</th>
+      <td>25.071005</td>
+      <td>0.128708</td>
+      <td>0.128708</td>
+      <td>-0.000000</td>
+      <td>0.217467</td>
+      <td>0.159613</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RS</span> <span class="o">=</span> <span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;gain_average_14&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;loss_average_14&#39;</span><span class="p">]</span>
+<span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="mi">100</span><span class="o">-</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">RS</span><span class="p">))</span>
+<span class="n">df_apple4</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">15</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Close</th>
+      <th>diff</th>
+      <th>gain</th>
+      <th>loss</th>
+      <th>gain_average_14</th>
+      <th>loss_average_14</th>
+      <th>RSI</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-01-16</th>
+      <td>23.519882</td>
+      <td>-0.184181</td>
+      <td>0.000000</td>
+      <td>0.184181</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-20</th>
+      <td>24.125687</td>
+      <td>0.605804</td>
+      <td>0.605804</td>
+      <td>-0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-21</th>
+      <td>24.309868</td>
+      <td>0.184181</td>
+      <td>0.184181</td>
+      <td>-0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2015-01-22</th>
+      <td>24.942297</td>
+      <td>0.632429</td>
+      <td>0.632429</td>
+      <td>-0.000000</td>
+      <td>0.208274</td>
+      <td>0.159613</td>
+      <td>56.613540</td>
+    </tr>
+    <tr>
+      <th>2015-01-23</th>
+      <td>25.071005</td>
+      <td>0.128708</td>
+      <td>0.128708</td>
+      <td>-0.000000</td>
+      <td>0.217467</td>
+      <td>0.159613</td>
+      <td>57.671326</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_apple4</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">][:</span><span class="n">N</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="n">df_apple4</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df_apple4</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">df_apple4</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df_apple4</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;RSI&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3239bcece36216cd9bc2dff6a84f34f2ba42156f5a2deb227ed48b2ca72bec3e.png" src="_images/3239bcece36216cd9bc2dff6a84f34f2ba42156f5a2deb227ed48b2ca72bec3e.png" />
+</div>
+</div>
 </section>
 </section>
 
@@ -398,12 +1619,12 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="proj2_intro.html"
+       href="proj2_coding.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Project-2: Novel Factors</p>
+        <p class="prev-next-title">Coding</p>
       </div>
     </a>
     <a class="right-next"
@@ -430,9 +1651,20 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Question-1: Technical Indicators</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#title">Title</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-indicators">Technical Indicators</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-average">Moving Average</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-moving-average">Exponential Moving Average</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moving-average-convergence-divergence">Moving Average Convergence Divergence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-strength-index">Relative Strength Index</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
